@@ -84,6 +84,7 @@ END-OF-SELECTION.
 * P_OBJNAM D       .
 * P_SCRLAN         Source Language
 * P_TYPE D       .
+* RB_DTEL         Data element
 * RB_FUNC         Function Module
 * RB_PROG         Program
 * RB_TRAN         Transaction Code

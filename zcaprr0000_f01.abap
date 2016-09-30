@@ -44,6 +44,14 @@ FORM read_master_language.
       INTO p_langu
       WHERE func~funcname EQ p_obj.
 
+    WHEN rb_dtel.
+
+      SELECT SINGLE dtelmaster
+      FROM dd04l
+      INTO p_langu
+      WHERE rollname EQ p_obj
+        AND as4local EQ 'A'.
+
     WHEN OTHERS.
   ENDCASE.
 
@@ -63,6 +71,8 @@ FORM radiobutton_rb11.
       p_type = 'FNC1'.
     WHEN rb_tran.
       p_type = 'TRAN'.
+    WHEN rb_dtel.
+      p_type = 'DTEL'.
     WHEN OTHERS.
   ENDCASE.
 
@@ -357,7 +367,7 @@ FORM set_p_objnam.
   DATA: wl_function TYPE tyl_function.
 
   CASE abap_true.
-    WHEN rb_prog OR rb_tran.
+    WHEN rb_prog OR rb_tran OR rb_dtel.
 
       p_objnam = p_obj.
 
