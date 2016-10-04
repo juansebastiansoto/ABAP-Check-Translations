@@ -85,8 +85,10 @@ END-OF-SELECTION.
 * P_SCRLAN         Source Language
 * P_TYPE D       .
 * RB_DTEL         Data element
+* RB_FUGR         Function Group
 * RB_FUNC         Function Module
 * RB_PROG         Program
+* RB_STRC         Structure or Table
 * RB_TRAN         Transaction Code
 
 ----------------------------------------------------------------------------------

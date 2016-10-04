@@ -52,6 +52,24 @@ FORM read_master_language.
       WHERE rollname EQ p_obj
         AND as4local EQ 'A'.
 
+    WHEN rb_strc.
+
+      SELECT SINGLE masterlang
+      FROM tadir
+      INTO p_langu
+      WHERE pgmid    EQ 'R3TR'
+        AND object   EQ 'TABL'
+        AND obj_name EQ p_obj.
+
+    WHEN rb_fugr.
+
+      SELECT SINGLE masterlang
+      FROM tadir
+      INTO p_langu
+      WHERE pgmid    EQ 'R3TR'
+        AND object   EQ 'FUGR'
+        AND obj_name EQ p_obj.
+
     WHEN OTHERS.
   ENDCASE.
 
@@ -73,6 +91,10 @@ FORM radiobutton_rb11.
       p_type = 'TRAN'.
     WHEN rb_dtel.
       p_type = 'DTEL'.
+    WHEN rb_strc.
+      p_type = 'TABT'.
+    WHEN rb_fugr.
+      p_type = 'RPT1'.
     WHEN OTHERS.
   ENDCASE.
 
@@ -367,7 +389,7 @@ FORM set_p_objnam.
   DATA: wl_function TYPE tyl_function.
 
   CASE abap_true.
-    WHEN rb_prog OR rb_tran OR rb_dtel.
+    WHEN rb_prog OR rb_tran OR rb_dtel OR rb_strc.
 
       p_objnam = p_obj.
 
