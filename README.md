@@ -7,6 +7,7 @@ Report to check the translations elements in ABAP
 2. Create the ZCAPRR0000 program with the SE38 transaction
 3. Copy the source code in each file into SAP
 4. Copy the selection screen text elements
+5. Activate
 
 ## How to use it:
 
