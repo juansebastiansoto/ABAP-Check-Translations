@@ -1,14 +1,14 @@
 # ABAP-Check-Translations
 Report to check the translations elements in ABAP
 
-<h4>Instalation:
+## Instalation:
 
 1. Clone the repo
 2. Create the ZCAPRR0000 program with the SE38 transaction
 3. Copy the source code in each file into SAP
 4. Copy the selection screen text elements
 
-<h4>How to use it:
+## How to use it:
 
 1. Run the ZCAPRR0000 program
 2. Enter the object name to analize
@@ -16,7 +16,7 @@ Report to check the translations elements in ABAP
 4. Choose the object type
 5. Press `ENTER`and then `F8` (run)
 
-<h4>The Icons:
+## The Icons:
 
 | Color  | Meaning |
 |--------|---------|
