@@ -27,10 +27,13 @@ Report to check the translations elements in ABAP
 ## Screenshots
 
 Selection-Screen
+<br />
 ![Selection-Screen](/images/selection_screen.png)
 
 Not Translated
+<br />
 ![Not Translated](/images/not_translated.png)
 
 Translated
+<br />
 ![Translated](/images/translated.png)
