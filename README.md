@@ -28,7 +28,9 @@ Report to check the translations elements in ABAP
 
 Selection-Screen
 ![Selection-Screen](/images/selection_screen.png)
+
 Not Translated
 ![Not Translated](/images/not_translated.png)
+
 Translated
 ![Translated](/images/translated.png)
