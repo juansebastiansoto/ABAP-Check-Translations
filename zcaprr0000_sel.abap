@@ -14,7 +14,9 @@ PARAMETERS: rb_prog RADIOBUTTON GROUP rb11 DEFAULT 'X' USER-COMMAND rb11,
             rb_fugr RADIOBUTTON GROUP rb11,
             rb_tran RADIOBUTTON GROUP rb11,
             rb_dtel RADIOBUTTON GROUP rb11,
-            rb_strc RADIOBUTTON GROUP rb11.
+            rb_strc RADIOBUTTON GROUP rb11,
+            rb_doma RADIOBUTTON GROUP rb11,
+            rb_valu RADIOBUTTON GROUP rb11.
 
 SELECTION-SCREEN END OF BLOCK b11.
 

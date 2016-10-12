@@ -70,6 +70,15 @@ FORM read_master_language.
         AND object   EQ 'FUGR'
         AND obj_name EQ p_obj.
 
+    WHEN rb_doma OR rb_valu.
+
+      SELECT SINGLE masterlang
+      FROM tadir
+      INTO p_langu
+      WHERE pgmid    EQ 'R3TR'
+        AND object   EQ 'DOMA'
+        AND obj_name EQ p_obj.
+
     WHEN OTHERS.
   ENDCASE.
 
@@ -95,6 +104,10 @@ FORM radiobutton_rb11.
       p_type = 'TABT'.
     WHEN rb_fugr.
       p_type = 'RPT1'.
+    WHEN rb_doma.
+      p_type = 'DOMA'.
+    WHEN rb_valu.
+      p_type = 'VALU'.
     WHEN OTHERS.
   ENDCASE.
 
@@ -389,7 +402,7 @@ FORM set_p_objnam.
   DATA: wl_function TYPE tyl_function.
 
   CASE abap_true.
-    WHEN rb_prog OR rb_tran OR rb_dtel OR rb_strc.
+    WHEN rb_prog OR rb_tran OR rb_dtel OR rb_strc OR rb_doma OR rb_valu.
 
       p_objnam = p_obj.
 

@@ -84,12 +84,14 @@ END-OF-SELECTION.
 * P_OBJNAM D       .
 * P_SCRLAN         Source Language
 * P_TYPE D       .
+* RB_DOMA         Domain
 * RB_DTEL         Data element
 * RB_FUGR         Function Group
 * RB_FUNC         Function Module
 * RB_PROG         Program
 * RB_STRC         Structure or Table
 * RB_TRAN         Transaction Code
+* RB_VALU         Domain Values
 
 ----------------------------------------------------------------------------------
 Extracted by Mass Download version 1.5.5 - E.G.Mellodew. 1998-2016. Sap Release 700
