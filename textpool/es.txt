@@ -1,0 +1,27 @@
+13.10.2016                       Dynamic List Display                               1
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+|Text Key             |Source Text             |Translated Text                     |
+-------------------------------------------------------------------------------------
+|SELECT P_DEST   00007|Translated to...        |Traducido al...                     |
+|SELECT P_DSTLAN 00008|Destination Language    |Idioma destino                      |
+|SELECT P_LANGU  00009|Master Language         |Idioma maestro                      |
+|SELECT P_SCRLAN 00011|Source Language         |Idioma origen                       |
+|SELECT RB_CLAS  00012|Class                   |Clases                              |
+|SELECT RB_DOMA  00013|Domain                  |Dominio                             |
+|SELECT RB_DTEL  00014|Data element            |Elemento de dato                    |
+|SELECT RB_ENQU  00015|Lock object             |Objeto de bloqueo                   |
+|SELECT RB_FUGR  00016|Function Group          |Grupo de función                    |
+|SELECT RB_FUNC  00017|Function Module         |Módulo de Función                   |
+|SELECT RB_MESS  00018|Message Class           |Clase de mensajes                   |
+|SELECT RB_PROG  00019|Program                 |Programa                            |
+|SELECT RB_SHLP  00020|Search help             |Ayuda de búsqueda                   |
+|SELECT RB_STRC  00021|Structure or Table      |Estructura o Tabla                  |
+|SELECT RB_TRAN  00022|Transaction Code        |Transacción                         |
+|TEXT   B10      00001|Select Object           |Elegir objeto                       |
+|TEXT   B11      00002|Object Type             |Tipo de objeto                      |
+|TEXT   B20      00003|Object master data      |Dato maestro del objeto             |
+|TEXT   F01      00004|Source Text             |Texto original                      |
+|TEXT   F02      00005|Translated Text         |Texto traducido                     |
+|TITLE           00006|Check Translation Status|Verificar estado de las traducciones|
+-------------------------------------------------------------------------------------
