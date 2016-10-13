@@ -43,8 +43,6 @@ AT SELECTION-SCREEN OUTPUT.
   PERFORM read_iso_langu USING p_dest
                       CHANGING p_dstlan.
 
-  PERFORM set_p_objnam.
-
 AT SELECTION-SCREEN ON p_obj.
 
   PERFORM read_master_language.
@@ -81,17 +79,18 @@ END-OF-SELECTION.
 * P_DSTLAN         Destination Language
 * P_LANGU         Master Language
 * P_OBJ D       .
-* P_OBJNAM D       .
 * P_SCRLAN         Source Language
-* P_TYPE D       .
+* RB_CLAS         Class
 * RB_DOMA         Domain
 * RB_DTEL         Data element
+* RB_ENQU         Lock object
 * RB_FUGR         Function Group
 * RB_FUNC         Function Module
+* RB_MESS         Message Class
 * RB_PROG         Program
+* RB_SHLP         Search help
 * RB_STRC         Structure or Table
 * RB_TRAN         Transaction Code
-* RB_VALU         Domain Values
 
 ----------------------------------------------------------------------------------
 Extracted by Mass Download version 1.5.5 - E.G.Mellodew. 1998-2016. Sap Release 700

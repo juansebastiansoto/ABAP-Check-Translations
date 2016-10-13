@@ -70,13 +70,49 @@ FORM read_master_language.
         AND object   EQ 'FUGR'
         AND obj_name EQ p_obj.
 
-    WHEN rb_doma OR rb_valu.
+    WHEN rb_doma.
 
       SELECT SINGLE masterlang
       FROM tadir
       INTO p_langu
       WHERE pgmid    EQ 'R3TR'
         AND object   EQ 'DOMA'
+        AND obj_name EQ p_obj.
+
+    WHEN rb_shlp.
+
+      SELECT SINGLE masterlang
+      FROM tadir
+      INTO p_langu
+      WHERE pgmid    EQ 'R3TR'
+        AND object   EQ 'SHLP'
+        AND obj_name EQ p_obj.
+
+    WHEN rb_enqu.
+
+      SELECT SINGLE masterlang
+      FROM tadir
+      INTO p_langu
+      WHERE pgmid    EQ 'R3TR'
+        AND object   EQ 'ENQU'
+        AND obj_name EQ p_obj.
+
+    WHEN rb_clas.
+
+      SELECT SINGLE masterlang
+      FROM tadir
+      INTO p_langu
+      WHERE pgmid    EQ 'R3TR'
+        AND object   EQ 'CLAS'
+        AND obj_name EQ p_obj.
+
+    WHEN rb_mess.
+
+      SELECT SINGLE masterlang
+      FROM tadir
+      INTO p_langu
+      WHERE pgmid    EQ 'R3TR'
+        AND object   EQ 'MSAG'
         AND obj_name EQ p_obj.
 
     WHEN OTHERS.
@@ -91,25 +127,48 @@ ENDFORM.                                                    " READ_MASTER_LANGUA
 *----------------------------------------------------------------------*
 FORM radiobutton_rb11.
 
+  DATA: wl_object TYPE ty_objects.
+
+  CLEAR t_objects.
+
   CASE abap_true.
     WHEN rb_prog.
-      p_type = 'RPT4'.
+      wl_object-type   = 'RPT4'.
+      APPEND wl_object TO t_objects.
     WHEN rb_func.
-      p_type = 'FNC1'.
+      wl_object-type = 'FNC1'.
+      APPEND wl_object TO t_objects.
     WHEN rb_tran.
-      p_type = 'TRAN'.
+      wl_object-type = 'TRAN'.
+      APPEND wl_object TO t_objects.
     WHEN rb_dtel.
-      p_type = 'DTEL'.
+      wl_object-type = 'DTEL'.
+      APPEND wl_object TO t_objects.
     WHEN rb_strc.
-      p_type = 'TABT'.
+      wl_object-type = 'TABT'.
+      APPEND wl_object TO t_objects.
     WHEN rb_fugr.
-      p_type = 'RPT1'.
+      wl_object-type = 'RPT1'.
+      APPEND wl_object TO t_objects.
     WHEN rb_doma.
-      p_type = 'DOMA'.
-    WHEN rb_valu.
-      p_type = 'VALU'.
+      wl_object-type = 'DOMA'. " Descriptions
+      APPEND wl_object TO t_objects.
+    WHEN rb_shlp.
+      wl_object-type = 'SHLP'.
+      APPEND wl_object TO t_objects.
+    WHEN rb_enqu.
+      wl_object-type = 'ENQU'.
+      APPEND wl_object TO t_objects.
+    WHEN rb_clas.
+      wl_object-type = 'CLAS'. " Descriptions
+      APPEND wl_object TO t_objects.
+    WHEN rb_mess.
+      wl_object-type = 'MSAG'.
+      APPEND wl_object TO t_objects.
     WHEN OTHERS.
   ENDCASE.
+
+  PERFORM set_objnam.
 
 ENDFORM.                    " RADIOBUTTON_RB11
 *&---------------------------------------------------------------------*
@@ -181,45 +240,52 @@ FORM analyze_translations.
 
   DATA: wl_texts     TYPE LINE OF ty_t_pcx_s1,
         wl_proposals TYPE LINE OF ty_t_pcx_s2,
-        wl_output    TYPE ty_output.
+        wl_output    TYPE ty_output,
+        wl_object    TYPE ty_objects.
 
   DATA: wl_text_pair_read TYPE ty_text_pair_read.
 
-  PERFORM read_texts CHANGING tl_texts
-                              wl_text_pair_read.
+  LOOP AT t_objects INTO wl_object.
 
-  PERFORM read_proposals USING wl_text_pair_read
-                               tl_texts
-                      CHANGING tl_proposals.
+    PERFORM read_texts    USING wl_object
+                       CHANGING tl_texts
+                                wl_text_pair_read.
 
-  LOOP AT tl_texts INTO wl_texts.
+    PERFORM read_proposals USING wl_text_pair_read
+                                 tl_texts
+                                 wl_object
+                        CHANGING tl_proposals.
 
-    MOVE-CORRESPONDING wl_texts TO wl_output.
+    LOOP AT tl_texts INTO wl_texts.
 
-    READ TABLE tl_proposals
-    INTO wl_proposals
-    WITH KEY textkey = wl_output-textkey.
+      MOVE-CORRESPONDING wl_texts TO wl_output.
 
-    IF sy-subrc EQ 0.
-      wl_output-stattrn = wl_proposals-stattrn.
-    ENDIF.
+      READ TABLE tl_proposals
+      INTO wl_proposals
+      WITH KEY textkey = wl_output-textkey.
+
+      IF sy-subrc EQ 0.
+        wl_output-stattrn = wl_proposals-stattrn.
+      ENDIF.
 
 *** T	Translated
 *** M	Modified
 *** N	New
 *** D	Deleted
 
-    CASE wl_output-stattrn.
-      WHEN 'T'.
-        wl_output-icon = icon_led_green.
-      WHEN 'M'.
-        wl_output-icon = icon_led_yellow.
-      WHEN OTHERS.
-        wl_output-icon = icon_led_red.
-    ENDCASE.
+      CASE wl_output-stattrn.
+        WHEN 'T'.
+          wl_output-icon = icon_led_green.
+        WHEN 'M'.
+          wl_output-icon = icon_led_yellow.
+        WHEN OTHERS.
+          wl_output-icon = icon_led_red.
+      ENDCASE.
 
-    APPEND wl_output TO t_output.
-    CLEAR wl_output.
+      APPEND wl_output TO t_output.
+      CLEAR wl_output.
+
+    ENDLOOP.
 
   ENDLOOP.
 
@@ -232,16 +298,17 @@ ENDFORM.                    " ANALYZE_TRANSLATIONS
 *----------------------------------------------------------------------*
 *      <--P_TL_TEXTS  text
 *----------------------------------------------------------------------*
-FORM read_texts  CHANGING pt_texts TYPE ty_t_pcx_s1
-                          pw_text_pair_read TYPE ty_text_pair_read.
+FORM read_texts  USING pw_object         TYPE ty_objects
+              CHANGING pt_texts          TYPE ty_t_pcx_s1
+                       pw_text_pair_read TYPE ty_text_pair_read.
 
   CALL FUNCTION 'LXE_OBJ_TEXT_PAIR_READ'
     EXPORTING
       t_lang    = p_dstlan
       s_lang    = p_scrlan
       custmnr   = '999999'
-      objtype   = p_type
-      objname   = p_objnam
+      objtype   = pw_object-type
+      objname   = pw_object-objnam
     IMPORTING
       domatyp   = pw_text_pair_read-domatyp
       domanam   = pw_text_pair_read-domanam
@@ -260,6 +327,7 @@ ENDFORM.                    " READ_TEXTS
 *----------------------------------------------------------------------*
 FORM read_proposals  USING    pw_text_pair_read TYPE ty_text_pair_read
                               pt_texts          TYPE ty_t_pcx_s1
+                              pw_object         TYPE ty_objects
                      CHANGING pt_proposals      TYPE ty_t_pcx_s2.
 
   CALL FUNCTION 'LXE_PP1_PROPOSALS_GET_SE63'
@@ -267,7 +335,7 @@ FORM read_proposals  USING    pw_text_pair_read TYPE ty_text_pair_read
       s_lang   = p_scrlan
       t_lang   = p_dstlan
       custmnr  = '999999'
-      objtype  = p_type
+      objtype  = pw_object-type
       domatyp  = pw_text_pair_read-domatyp
       domanam  = pw_text_pair_read-domanam
     TABLES
@@ -388,39 +456,157 @@ FORM fieldcat  CHANGING pt_fieldcat TYPE lvc_t_fcat.
 ENDFORM.                    " FIELDCAT
 
 *&---------------------------------------------------------------------*
-*&      Form  SET_P_OBJNAM
+*&      Form  SET_OBJNAM
 *&---------------------------------------------------------------------*
 * Set the object name for the translation system
 *----------------------------------------------------------------------*
-FORM set_p_objnam.
+FORM set_objnam.
 
   TYPES: BEGIN OF tyl_function,
            funcname TYPE tfdir-funcname,
            pname    TYPE tfdir-pname,
          END OF tyl_function.
 
+  DATA: tl_subobjects TYPE STANDARD TABLE OF ty_objects.
+
   DATA: wl_function TYPE tyl_function.
 
-  CASE abap_true.
-    WHEN rb_prog OR rb_tran OR rb_dtel OR rb_strc OR rb_doma OR rb_valu.
+  FIELD-SYMBOLS: <fsl_object> TYPE ty_objects.
 
-      p_objnam = p_obj.
+  LOOP AT t_objects ASSIGNING <fsl_object>.
 
-    WHEN rb_func.
+    CASE <fsl_object>-type.
+      WHEN 'FUNC'.
 
-      SELECT SINGLE funcname pname
-      FROM tfdir
-      INTO wl_function
-      WHERE funcname EQ p_obj.
+        SELECT SINGLE funcname pname
+        FROM tfdir
+        INTO wl_function
+        WHERE funcname EQ p_obj.
 
-      wl_function-pname = wl_function-pname+4.
-      p_objnam = wl_function.
+        wl_function-pname = wl_function-pname+4.
+        <fsl_object>-objnam = wl_function.
 
-    WHEN OTHERS.
+      WHEN OTHERS.
+        <fsl_object>-objnam = p_obj.
+    ENDCASE.
+
+    PERFORM fill_subobjects USING <fsl_object>-type
+                                  <fsl_object>-objnam
+                         CHANGING tl_subobjects.
+
+  ENDLOOP.
+
+  APPEND LINES OF tl_subobjects TO t_objects.
+
+ENDFORM.                    " SET_OBJNAM
+
+*&---------------------------------------------------------------------*
+*&      Form  FILL_SUBOBJECTS
+*&---------------------------------------------------------------------*
+* Fill the subobjects like Domain --> Fixed Values ; Message Class --> Messages
+*----------------------------------------------------------------------*
+*      -->PV_TYPE        Master object type
+*      -->PV_OBJECT      Master object name
+*      <--PT_SUBOBJECTS  Subobjects table
+*----------------------------------------------------------------------*
+FORM fill_subobjects  USING    pv_type       TYPE ty_objects-type
+                               pv_object     TYPE ty_objects-objnam
+                      CHANGING pt_subobjects TYPE ty_t_objects.
+
+  CASE pv_type.
+    WHEN 'DOMA'.
+      PERFORM fill_doma_subobjects USING pv_object
+                                CHANGING pt_subobjects.
+    WHEN 'MSAG'.
+      PERFORM fill_msag_subobjects USING pv_object
+                                CHANGING pt_subobjects.
+    WHEN 'CLAS'.
+      PERFORM fill_class_subobjects USING pv_object
+                                 CHANGING pt_subobjects.
   ENDCASE.
 
+ENDFORM.                    " FILL_SUBOBJECTS
 
-ENDFORM.                    " SET_P_OBJNAM
+*&---------------------------------------------------------------------*
+*&      Form  FILL_DOMA_SUBOBJECTS
+*&---------------------------------------------------------------------*
+*  Fill Domain subobjects
+*----------------------------------------------------------------------*
+FORM fill_doma_subobjects  USING    pv_domain     TYPE ty_objects-objnam
+                           CHANGING pt_subobjects TYPE ty_t_objects.
+
+  DATA: wl_object TYPE ty_objects.
+
+  wl_object-type   = 'VALU'. " Fixed-Values
+  wl_object-objnam = pv_domain.
+  APPEND wl_object TO pt_subobjects.
+
+ENDFORM.                    " FILL_DOMA_SUBOBJECTS
+
+*&---------------------------------------------------------------------*
+*&      Form  FILL_CLASS_SUBOBJECTS
+*&---------------------------------------------------------------------*
+*  Fill Classes subobjects
+*----------------------------------------------------------------------*
+FORM fill_class_subobjects USING    pv_class      TYPE ty_objects-objnam
+                           CHANGING pt_subobjects TYPE ty_t_objects.
+
+  DATA: wl_object TYPE ty_objects.
+
+  wl_object-type   = 'RPT8'.  " Text-pool
+  wl_object-objnam = pv_class.
+  APPEND wl_object TO pt_subobjects.
+
+ENDFORM.                    " FILL_CLASS_SUBOBJECTS
+
+*&---------------------------------------------------------------------*
+*&      Form  FILL_MSAG_SUBOBJECTS
+*&---------------------------------------------------------------------*
+*  Fill Messages in a message class and doku like subobjects
+*----------------------------------------------------------------------*
+*      -->PV_MESSAGE     Message Class
+*      <--PT_SUBOBJECTS  text
+*----------------------------------------------------------------------*
+FORM fill_msag_subobjects  USING    pv_message     TYPE ty_objects-objnam
+                           CHANGING pt_subobjects  TYPE ty_t_objects.
+
+  TYPES: BEGIN OF tyl_t100,
+           sprsl  TYPE t100-sprsl,
+           arbgb  TYPE t100-arbgb,
+           msgnr  TYPE t100-msgnr,
+         END OF tyl_t100.
+
+  DATA: tl_t100  TYPE STANDARD TABLE OF tyl_t100.
+
+  DATA: wl_t100   TYPE tyl_t100,
+        wl_object TYPE ty_objects.
+
+  CHECK p_langu IS NOT INITIAL.
+
+  SELECT sprsl
+         arbgb
+         msgnr
+  FROM t100
+  INTO TABLE tl_t100
+  WHERE sprsl EQ p_langu
+    AND arbgb EQ pv_message.
+
+  LOOP AT tl_t100 INTO wl_t100.
+
+    CLEAR: wl_object.
+
+    wl_object-type = 'MESS'.
+
+    CONCATENATE wl_t100-arbgb
+                wl_t100-msgnr
+    INTO wl_object-objnam
+    RESPECTING BLANKS.
+
+    APPEND wl_object TO pt_subobjects.
+
+  ENDLOOP.
+
+ENDFORM.                    " FILL_MSAG_SUBOBJECTS
 
 ----------------------------------------------------------------------------------
 Extracted by Mass Download version 1.5.5 - E.G.Mellodew. 1998-2016. Sap Release 700

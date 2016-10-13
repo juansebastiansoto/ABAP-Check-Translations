@@ -16,7 +16,10 @@ PARAMETERS: rb_prog RADIOBUTTON GROUP rb11 DEFAULT 'X' USER-COMMAND rb11,
             rb_dtel RADIOBUTTON GROUP rb11,
             rb_strc RADIOBUTTON GROUP rb11,
             rb_doma RADIOBUTTON GROUP rb11,
-            rb_valu RADIOBUTTON GROUP rb11.
+            rb_shlp RADIOBUTTON GROUP rb11,
+            rb_enqu RADIOBUTTON GROUP rb11,
+            rb_clas RADIOBUTTON GROUP rb11,
+            rb_mess RADIOBUTTON GROUP rb11.
 
 SELECTION-SCREEN END OF BLOCK b11.
 
@@ -26,9 +29,7 @@ SELECTION-SCREEN END OF BLOCK b10.
 
 SELECTION-SCREEN BEGIN OF BLOCK b20 WITH FRAME TITLE text-b20.
 
-PARAMETERS: p_type   TYPE lxeobjtype MODIF ID b20,
-            p_objnam TYPE lxeobjname MODIF ID b20,
-            p_langu  TYPE rload      MODIF ID b20,
+PARAMETERS: p_langu  TYPE rload      MODIF ID b20,
             p_scrlan TYPE lxeisolang MODIF ID b20,
             p_dstlan TYPE lxeisolang MODIF ID b20.
 
