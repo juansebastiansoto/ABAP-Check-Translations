@@ -81,6 +81,7 @@ END-OF-SELECTION.
 * P_OBJ D       .
 * P_SCRLAN         Source Language
 * RB_CLAS         Class
+* RB_CUAD         Status & Title GUI
 * RB_DOMA         Domain
 * RB_DTEL         Data element
 * RB_ENQU         Lock object

@@ -165,6 +165,9 @@ FORM radiobutton_rb11.
     WHEN rb_mess.
       wl_object-type = 'MSAG'.
       APPEND wl_object TO t_objects.
+    WHEN rb_cuad.
+      wl_object-type = 'CA4'.
+      APPEND wl_object TO t_objects.
     WHEN OTHERS.
   ENDCASE.
 
