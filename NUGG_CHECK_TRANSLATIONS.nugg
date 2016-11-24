@@ -1,0 +1,858 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nugget name="CHECK_TRANSLATIONS">
+ <PROG NAME="ZCAPRR0000" VARCL="X" SUBC="1" APPL="S" RSTAT="K" RMAND="200" RLOAD="E" FIXPT="X" UCCHECK="X">
+  <textPool>
+   <language SPRAS="E">
+    <textElement ID="I" KEY="B10" ENTRY="Select Object" LENGTH="13 "/>
+    <textElement ID="I" KEY="B11" ENTRY="Object Type" LENGTH="15 "/>
+    <textElement ID="I" KEY="B20" ENTRY="Object master data" LENGTH="27 "/>
+    <textElement ID="I" KEY="F01" ENTRY="Source Text" LENGTH="15 "/>
+    <textElement ID="I" KEY="F02" ENTRY="Translated Text" LENGTH="15 "/>
+    <textElement ID="R" ENTRY="Check Translation Status" LENGTH="24 "/>
+    <textElement ID="S" KEY="P_DEST" ENTRY="        Translated to..." LENGTH="24 "/>
+    <textElement ID="S" KEY="P_DSTLAN" ENTRY="        Destination Language" LENGTH="28 "/>
+    <textElement ID="S" KEY="P_LANGU" ENTRY="        Master Language" LENGTH="23 "/>
+    <textElement ID="S" KEY="P_OBJ" ENTRY="D       ." LENGTH="17 "/>
+    <textElement ID="S" KEY="P_SCRLAN" ENTRY="        Source Language" LENGTH="23 "/>
+    <textElement ID="S" KEY="RB_CLAS" ENTRY="        Class" LENGTH="13 "/>
+    <textElement ID="S" KEY="RB_CUAD" ENTRY="        Status &amp; Title GUI" LENGTH="26 "/>
+    <textElement ID="S" KEY="RB_DOMA" ENTRY="        Domain" LENGTH="14 "/>
+    <textElement ID="S" KEY="RB_DTEL" ENTRY="        Data element" LENGTH="20 "/>
+    <textElement ID="S" KEY="RB_ENQU" ENTRY="        Lock object" LENGTH="19 "/>
+    <textElement ID="S" KEY="RB_FUGR" ENTRY="        Function Group" LENGTH="22 "/>
+    <textElement ID="S" KEY="RB_FUNC" ENTRY="        Function Module" LENGTH="23 "/>
+    <textElement ID="S" KEY="RB_MESS" ENTRY="        Message Class" LENGTH="21 "/>
+    <textElement ID="S" KEY="RB_PROG" ENTRY="        Program" LENGTH="15 "/>
+    <textElement ID="S" KEY="RB_SHLP" ENTRY="        Search help" LENGTH="19 "/>
+    <textElement ID="S" KEY="RB_STRC" ENTRY="        Structure or Table" LENGTH="26 "/>
+    <textElement ID="S" KEY="RB_TRAN" ENTRY="        Transaction Code" LENGTH="24 "/>
+   </language>
+   <language SPRAS="S">
+    <textElement ID="I" KEY="B10" ENTRY="Elegir objeto" LENGTH="13 "/>
+    <textElement ID="I" KEY="B11" ENTRY="Tipo de objeto" LENGTH="15 "/>
+    <textElement ID="I" KEY="B20" ENTRY="Dato maestro del objeto" LENGTH="27 "/>
+    <textElement ID="I" KEY="F01" ENTRY="Texto original" LENGTH="15 "/>
+    <textElement ID="I" KEY="F02" ENTRY="Texto traducido" LENGTH="15 "/>
+    <textElement ID="R" ENTRY="Verificar estado de las traducciones" LENGTH="70 "/>
+    <textElement ID="S" KEY="P_DEST" ENTRY="        Traducido al..." LENGTH="24 "/>
+    <textElement ID="S" KEY="P_DSTLAN" ENTRY="        Idioma destino" LENGTH="28 "/>
+    <textElement ID="S" KEY="P_LANGU" ENTRY="        Idioma maestro" LENGTH="23 "/>
+    <textElement ID="S" KEY="P_SCRLAN" ENTRY="        Idioma origen" LENGTH="23 "/>
+    <textElement ID="S" KEY="RB_CLAS" ENTRY="        Clases" LENGTH="14 "/>
+    <textElement ID="S" KEY="RB_CUAD" ENTRY="        Estatus y Título GUI" LENGTH="28 "/>
+    <textElement ID="S" KEY="RB_DOMA" ENTRY="        Dominio" LENGTH="15 "/>
+    <textElement ID="S" KEY="RB_DTEL" ENTRY="        Elemento de dato" LENGTH="24 "/>
+    <textElement ID="S" KEY="RB_ENQU" ENTRY="        Objeto de bloqueo" LENGTH="25 "/>
+    <textElement ID="S" KEY="RB_FUGR" ENTRY="        Grupo de función" LENGTH="24 "/>
+    <textElement ID="S" KEY="RB_FUNC" ENTRY="        Módulo de Función" LENGTH="25 "/>
+    <textElement ID="S" KEY="RB_MESS" ENTRY="        Clase de mensajes" LENGTH="25 "/>
+    <textElement ID="S" KEY="RB_PROG" ENTRY="        Programa" LENGTH="16 "/>
+    <textElement ID="S" KEY="RB_SHLP" ENTRY="        Ayuda de búsqueda" LENGTH="25 "/>
+    <textElement ID="S" KEY="RB_STRC" ENTRY="        Estructura o Tabla" LENGTH="26 "/>
+    <textElement ID="S" KEY="RB_TRAN" ENTRY="        Transacción" LENGTH="24 "/>
+    <textElement ID="S" KEY="P_OBJ" ENTRY="D       ." LENGTH="17 "/>
+   </language>
+  </textPool>
+  <dynpros>
+   <dynpro PROG="ZCAPRR0000" DNUM="0100" FNUM="0100" BZMX="200 " BZBR="255 " MILI="196 " MICO="37 " MALI="0 " MACO="0 " NOLI="200 " NOCO="255 " VALP="0 " CUAN="G" SPRA="E" DTEXT="ALV">
+    <dynprofield FNAM="CC_0100" DIDX="00C8" FLG1="00" FLG2="30" FLG3="00" FILL="U" FMB1="30" FMB2="00" LENG="FF" LINE="01" COLN="02" LANF="00" LBLK="00" LREP="00" AUTH="101" AGLT="14" ADEZ="14"/>
+    <dynprofield FNAM="SY-UCOMM" DIDX="0000" FLG1="80" FLG2="10" FLG3="00" FMB1="00" FMB2="00" LENG="14" LINE="FF" COLN="01" LTYP="O" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AGLT="00" ADEZ="00" STXT="____________________"/>
+    <dynproflowsource>PROCESS BEFORE OUTPUT.
+
+  MODULE status_0100.
+
+  MODULE show_result.
+
+PROCESS AFTER INPUT.
+
+  MODULE user_command_0100.</dynproflowsource>
+   </dynpro>
+  </dynpros>
+  <pfstatus>
+   <pfstatus_sta CODE="ST0100" MODAL="D" ACTCODE="000001" PFKCODE="000001" BUTCODE="0001" INT_NOTE="0100 - Status GUI"/>
+   <pfstatus_fun CODE="BACK" TEXTNO="001" TEXT_TYPE="S" FUN_TEXT="Back"/>
+   <pfstatus_pfk CODE="000001" PFNO="03" FUNCODE="BACK" FUNNO="001"/>
+   <pfstatus_set STATUS="ST0100" FUNCTION="BACK"/>
+   <pfstatus_doc OBJ_TYPE="A" OBJ_CODE="000001" MODAL="D" INT_NOTE="0100 - Status GUI"/>
+   <pfstatus_doc OBJ_TYPE="P" OBJ_CODE="000001" MODAL="D" INT_NOTE="0100 - Status GUI"/>
+   <pfstatus_doc OBJ_TYPE="B" OBJ_CODE="000001" SUB_CODE="0001" MODAL="D" INT_NOTE="0100 - Status GUI"/>
+   <pfstatus_tit CODE="TT0100" TEXT="Check Translations"/>
+  </pfstatus>
+  <source>*----------------------------------------------------------------------*
+* Developer:    Sebastián Soto
+* Date:         27.09.2016
+* Description:  Creation
+*----------------------------------------------------------------------*
+*------  NOMENCLATURE  ------------------------------------------------*
+* V_    --&gt; Global Variable
+* W_    --&gt; Global Work Area
+* T_    --&gt; Global Internal Table
+* O_    --&gt; Global Object Instance
+* &lt;FS_  --&gt; Global Field Symbol
+* VL_   --&gt; Local Variable
+* WL_   --&gt; Local Work Area
+* TL_   --&gt; Local Internal Table
+* OL_   --&gt; Local Object Instance
+* &lt;FSL_ --&gt; Local Field Symbol
+* P_    --&gt; Parameter
+* S_    --&gt; Select-Option
+* RB_   --&gt; Radio Buttom
+* CK_   --&gt; Checkbox
+*----------------------------------------------------------------------*
+
+REPORT  zcaprr0000.
+
+INCLUDE zcaprr0000_top.
+INCLUDE zcaprr0000_sel.
+INCLUDE zcaprr0000_f01.
+INCLUDE zcaprr0000_o01.
+INCLUDE zcaprr0000_i01.
+
+INITIALIZATION.
+
+  PERFORM fill_lang_listbox.
+
+AT SELECTION-SCREEN OUTPUT.
+
+  PERFORM disable_modid_b20.
+  PERFORM radiobutton_rb11.
+
+  PERFORM read_iso_langu USING p_langu
+                      CHANGING p_scrlan.
+
+  PERFORM read_iso_langu USING p_dest
+                      CHANGING p_dstlan.
+
+AT SELECTION-SCREEN ON p_obj.
+
+  PERFORM read_master_language.
+
+AT SELECTION-SCREEN ON RADIOBUTTON GROUP rb11.
+
+  PERFORM radiobutton_rb11.
+
+START-OF-SELECTION.
+
+  PERFORM analyze_translations.
+
+END-OF-SELECTION.
+
+  CALL SCREEN 0100.</source>
+ </PROG>
+ <PROG NAME="ZCAPRR0000_TOP" VARCL="X" SUBC="I" APPL="S" RSTAT="K" RMAND="200" RLOAD="E" UCCHECK="X">
+  <textPool>
+   <language SPRAS="E">
+    <textElement ID="R" ENTRY="Include ZCAPRR0000_TOP" LENGTH="22 "/>
+   </language>
+  </textPool>
+  <source>TYPE-POOLS: abap, vrm, icon.
+
+TYPES: BEGIN OF ty_text_pair_read,
+         domatyp  TYPE  lxedomatyp,
+         domanam  TYPE  lxedomanam,
+       END OF ty_text_pair_read,
+       BEGIN OF ty_output,
+         icon    TYPE icon-name,
+         stattrn TYPE lxe_pcx_s2-stattrn,
+         textkey TYPE lxe_pcx_s1-textkey,
+         s_text  TYPE lxe_pcx_s1-s_text,
+         t_text  TYPE lxe_pcx_s1-t_text,
+       END OF ty_output,
+       BEGIN OF ty_objects,
+         type   TYPE lxeobjtype,
+         objnam TYPE lxeobjname,
+       END OF ty_objects.
+
+TYPES: ty_t_pcx_s1  TYPE STANDARD TABLE OF lxe_pcx_s1,
+       ty_t_pcx_s2  TYPE STANDARD TABLE OF lxe_pcx_s2,
+       ty_t_objects TYPE STANDARD TABLE OF ty_objects.
+
+DATA: o_alv    TYPE REF TO cl_gui_alv_grid,
+      o_cc     TYPE REF TO cl_gui_custom_container.
+
+DATA: t_output  TYPE STANDARD TABLE OF ty_output,
+      t_objects TYPE STANDARD TABLE OF ty_objects.</source>
+ </PROG>
+ <PROG NAME="ZCAPRR0000_SEL" VARCL="X" SUBC="I" APPL="S" RSTAT="K" RMAND="200" RLOAD="E" UCCHECK="X">
+  <textPool>
+   <language SPRAS="E">
+    <textElement ID="R" ENTRY="Include ZCAPRR0000_SEL" LENGTH="22 "/>
+   </language>
+  </textPool>
+  <source>SELECTION-SCREEN BEGIN OF BLOCK b10 WITH FRAME TITLE text-b10.
+
+PARAMETERS: p_obj TYPE e071-obj_name OBLIGATORY.
+
+PARAMETERS: p_dest AS LISTBOX VISIBLE LENGTH 10 DEFAULT sy-langu OBLIGATORY USER-COMMAND rb10.
+
+SELECTION-SCREEN SKIP.
+
+SELECTION-SCREEN BEGIN OF BLOCK b11 WITH FRAME TITLE text-b11.
+
+PARAMETERS: rb_prog RADIOBUTTON GROUP rb11 DEFAULT &apos;X&apos; USER-COMMAND rb11,
+            rb_cuad RADIOBUTTON GROUP rb11,
+            rb_func RADIOBUTTON GROUP rb11,
+            rb_fugr RADIOBUTTON GROUP rb11,
+            rb_tran RADIOBUTTON GROUP rb11,
+            rb_dtel RADIOBUTTON GROUP rb11,
+            rb_strc RADIOBUTTON GROUP rb11,
+            rb_doma RADIOBUTTON GROUP rb11,
+            rb_shlp RADIOBUTTON GROUP rb11,
+            rb_enqu RADIOBUTTON GROUP rb11,
+            rb_clas RADIOBUTTON GROUP rb11,
+            rb_mess RADIOBUTTON GROUP rb11.
+
+SELECTION-SCREEN END OF BLOCK b11.
+
+SELECTION-SCREEN END OF BLOCK b10.
+
+
+
+SELECTION-SCREEN BEGIN OF BLOCK b20 WITH FRAME TITLE text-b20.
+
+PARAMETERS: p_langu  TYPE rload      MODIF ID b20,
+            p_scrlan TYPE lxeisolang MODIF ID b20,
+            p_dstlan TYPE lxeisolang MODIF ID b20.
+
+SELECTION-SCREEN END OF BLOCK b20.</source>
+ </PROG>
+ <PROG NAME="ZCAPRR0000_F01" VARCL="X" SUBC="I" APPL="S" RSTAT="K" RMAND="200" RLOAD="E" UCCHECK="X">
+  <textPool>
+   <language SPRAS="E">
+    <textElement ID="R" ENTRY="Include ZCAPRR0000_F01" LENGTH="22 "/>
+   </language>
+  </textPool>
+  <source>*&amp;---------------------------------------------------------------------*
+*&amp;      Form  DISABLE_MODID_B20
+*&amp;---------------------------------------------------------------------*
+*  Disable the input data for the Modify ID B20
+*----------------------------------------------------------------------*
+FORM disable_modid_b20.
+
+  LOOP AT SCREEN.
+
+    CHECK screen-group1 EQ &apos;B20&apos;.
+
+    screen-input = 0.
+    MODIFY SCREEN.
+
+  ENDLOOP.
+
+ENDFORM.                    &quot; DISABLE_MODID_B20
+
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  READ_MASTER_LANGUAGE
+*&amp;---------------------------------------------------------------------*
+*  Read the object master language
+*----------------------------------------------------------------------*
+FORM read_master_language.
+
+  SET LOCALE LANGUAGE &apos;E&apos;.
+  TRANSLATE p_obj TO UPPER CASE.
+  SET LOCALE LANGUAGE sy-langu.
+
+  CASE abap_true.
+    WHEN rb_prog.
+
+      SELECT SINGLE rload
+      FROM trdir
+      INTO p_langu
+      WHERE name EQ p_obj.
+
+    WHEN rb_func.
+
+      SELECT SINGLE prog~rload
+      FROM tfdir AS func
+      INNER JOIN trdir AS prog
+      ON func~pname EQ prog~name
+      INTO p_langu
+      WHERE func~funcname EQ p_obj.
+
+    WHEN rb_dtel.
+
+      SELECT SINGLE dtelmaster
+      FROM dd04l
+      INTO p_langu
+      WHERE rollname EQ p_obj
+        AND as4local EQ &apos;A&apos;.
+
+    WHEN rb_strc.
+
+      SELECT SINGLE masterlang
+      FROM tadir
+      INTO p_langu
+      WHERE pgmid    EQ &apos;R3TR&apos;
+        AND object   EQ &apos;TABL&apos;
+        AND obj_name EQ p_obj.
+
+    WHEN rb_fugr.
+
+      SELECT SINGLE masterlang
+      FROM tadir
+      INTO p_langu
+      WHERE pgmid    EQ &apos;R3TR&apos;
+        AND object   EQ &apos;FUGR&apos;
+        AND obj_name EQ p_obj.
+
+    WHEN rb_doma.
+
+      SELECT SINGLE masterlang
+      FROM tadir
+      INTO p_langu
+      WHERE pgmid    EQ &apos;R3TR&apos;
+        AND object   EQ &apos;DOMA&apos;
+        AND obj_name EQ p_obj.
+
+    WHEN rb_shlp.
+
+      SELECT SINGLE masterlang
+      FROM tadir
+      INTO p_langu
+      WHERE pgmid    EQ &apos;R3TR&apos;
+        AND object   EQ &apos;SHLP&apos;
+        AND obj_name EQ p_obj.
+
+    WHEN rb_enqu.
+
+      SELECT SINGLE masterlang
+      FROM tadir
+      INTO p_langu
+      WHERE pgmid    EQ &apos;R3TR&apos;
+        AND object   EQ &apos;ENQU&apos;
+        AND obj_name EQ p_obj.
+
+    WHEN rb_clas.
+
+      SELECT SINGLE masterlang
+      FROM tadir
+      INTO p_langu
+      WHERE pgmid    EQ &apos;R3TR&apos;
+        AND object   EQ &apos;CLAS&apos;
+        AND obj_name EQ p_obj.
+
+    WHEN rb_mess.
+
+      SELECT SINGLE masterlang
+      FROM tadir
+      INTO p_langu
+      WHERE pgmid    EQ &apos;R3TR&apos;
+        AND object   EQ &apos;MSAG&apos;
+        AND obj_name EQ p_obj.
+
+    WHEN OTHERS.
+  ENDCASE.
+
+ENDFORM.                                                    &quot; READ_MASTER_LANGUAGE
+
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  RADIOBUTTON_RB11
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+FORM radiobutton_rb11.
+
+  DATA: wl_object TYPE ty_objects.
+
+  CLEAR t_objects.
+
+  CASE abap_true.
+    WHEN rb_prog.
+      wl_object-type   = &apos;RPT4&apos;.
+      APPEND wl_object TO t_objects.
+    WHEN rb_func.
+      wl_object-type = &apos;FNC1&apos;.
+      APPEND wl_object TO t_objects.
+    WHEN rb_tran.
+      wl_object-type = &apos;TRAN&apos;.
+      APPEND wl_object TO t_objects.
+    WHEN rb_dtel.
+      wl_object-type = &apos;DTEL&apos;.
+      APPEND wl_object TO t_objects.
+    WHEN rb_strc.
+      wl_object-type = &apos;TABT&apos;.
+      APPEND wl_object TO t_objects.
+    WHEN rb_fugr.
+      wl_object-type = &apos;RPT1&apos;.
+      APPEND wl_object TO t_objects.
+    WHEN rb_doma.
+      wl_object-type = &apos;DOMA&apos;. &quot; Descriptions
+      APPEND wl_object TO t_objects.
+    WHEN rb_shlp.
+      wl_object-type = &apos;SHLP&apos;.
+      APPEND wl_object TO t_objects.
+    WHEN rb_enqu.
+      wl_object-type = &apos;ENQU&apos;.
+      APPEND wl_object TO t_objects.
+    WHEN rb_clas.
+      wl_object-type = &apos;CLAS&apos;. &quot; Descriptions
+      APPEND wl_object TO t_objects.
+    WHEN rb_mess.
+      wl_object-type = &apos;MSAG&apos;.
+      APPEND wl_object TO t_objects.
+    WHEN rb_cuad.
+      wl_object-type = &apos;CA4&apos;.
+      APPEND wl_object TO t_objects.
+    WHEN OTHERS.
+  ENDCASE.
+
+  PERFORM set_objnam.
+
+ENDFORM.                    &quot; RADIOBUTTON_RB11
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  FILL_LANG_LISTBOX
+*&amp;---------------------------------------------------------------------*
+* Fill the listbox with the installed languages
+*----------------------------------------------------------------------*
+FORM fill_lang_listbox.
+
+  DATA: tl_installed TYPE STANDARD TABLE OF rmsaw_t002c,
+        tl_list      TYPE STANDARD TABLE OF vrm_value.
+
+  DATA: wl_installed TYPE rmsaw_t002c,
+        wl_list      TYPE vrm_value.
+
+  SELECT *
+  FROM rmsaw_t002c
+  INTO TABLE tl_installed
+  WHERE spras EQ sy-langu.
+
+  LOOP AT tl_installed INTO wl_installed.
+
+    wl_list-key  = wl_installed-sprsl.
+    wl_list-text = wl_installed-sptxt.
+    APPEND wl_list TO tl_list.
+
+  ENDLOOP.
+
+  CALL FUNCTION &apos;VRM_SET_VALUES&apos;
+    EXPORTING
+      id              = &apos;P_DEST&apos;
+      values          = tl_list
+    EXCEPTIONS
+      id_illegal_name = 1
+      OTHERS          = 2.
+  IF sy-subrc &lt;&gt; 0.
+    MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+            WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+  ENDIF.
+
+
+ENDFORM.                    &quot; FILL_LANG_LISTBOX
+
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  READ_ISO_LANGU
+*&amp;---------------------------------------------------------------------*
+FORM read_iso_langu  USING    pv_r3   TYPE langu
+                     CHANGING pv_iso  TYPE lxeisolang.
+
+  CALL FUNCTION &apos;LXE_T002_CHECK_LANGUAGE&apos;
+    EXPORTING
+      r3_lang    = pv_r3
+    IMPORTING
+      o_language = pv_iso
+    EXCEPTIONS
+      OTHERS     = 0.
+
+ENDFORM.                    &quot; READ_ISO_LANGU
+
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  ANALYZE_TRANSLATIONS
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+FORM analyze_translations.
+
+  DATA: tl_texts     TYPE ty_t_pcx_s1,
+        tl_proposals TYPE ty_t_pcx_s2.
+
+  DATA: wl_texts     TYPE LINE OF ty_t_pcx_s1,
+        wl_proposals TYPE LINE OF ty_t_pcx_s2,
+        wl_output    TYPE ty_output,
+        wl_object    TYPE ty_objects.
+
+  DATA: wl_text_pair_read TYPE ty_text_pair_read.
+
+  LOOP AT t_objects INTO wl_object.
+
+    PERFORM read_texts    USING wl_object
+                       CHANGING tl_texts
+                                wl_text_pair_read.
+
+    PERFORM read_proposals USING wl_text_pair_read
+                                 tl_texts
+                                 wl_object
+                        CHANGING tl_proposals.
+
+    LOOP AT tl_texts INTO wl_texts.
+
+      MOVE-CORRESPONDING wl_texts TO wl_output.
+
+      READ TABLE tl_proposals
+      INTO wl_proposals
+      WITH KEY textkey = wl_output-textkey.
+
+      IF sy-subrc EQ 0.
+        wl_output-stattrn = wl_proposals-stattrn.
+      ENDIF.
+
+*** T	Translated
+*** M	Modified
+*** N	New
+*** D	Deleted
+
+      CASE wl_output-stattrn.
+        WHEN &apos;T&apos;.
+          wl_output-icon = icon_led_green.
+        WHEN &apos;M&apos;.
+          wl_output-icon = icon_led_yellow.
+        WHEN OTHERS.
+          wl_output-icon = icon_led_red.
+      ENDCASE.
+
+      APPEND wl_output TO t_output.
+      CLEAR wl_output.
+
+    ENDLOOP.
+
+  ENDLOOP.
+
+ENDFORM.                    &quot; ANALYZE_TRANSLATIONS
+
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  READ_TEXTS
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      &lt;--P_TL_TEXTS  text
+*----------------------------------------------------------------------*
+FORM read_texts  USING pw_object         TYPE ty_objects
+              CHANGING pt_texts          TYPE ty_t_pcx_s1
+                       pw_text_pair_read TYPE ty_text_pair_read.
+
+  CALL FUNCTION &apos;LXE_OBJ_TEXT_PAIR_READ&apos;
+    EXPORTING
+      t_lang    = p_dstlan
+      s_lang    = p_scrlan
+      custmnr   = &apos;999999&apos;
+      objtype   = pw_object-type
+      objname   = pw_object-objnam
+    IMPORTING
+      domatyp   = pw_text_pair_read-domatyp
+      domanam   = pw_text_pair_read-domanam
+    TABLES
+      lt_pcx_s1 = pt_texts.
+
+ENDFORM.                    &quot; READ_TEXTS
+
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  READ_PROPOSALS
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      --&gt;P_WL_TEXT_PAIR_READ  text
+*      &lt;--P_TL_PROPOSALS  text
+*----------------------------------------------------------------------*
+FORM read_proposals  USING    pw_text_pair_read TYPE ty_text_pair_read
+                              pt_texts          TYPE ty_t_pcx_s1
+                              pw_object         TYPE ty_objects
+                     CHANGING pt_proposals      TYPE ty_t_pcx_s2.
+
+  CALL FUNCTION &apos;LXE_PP1_PROPOSALS_GET_SE63&apos;
+    EXPORTING
+      s_lang   = p_scrlan
+      t_lang   = p_dstlan
+      custmnr  = &apos;999999&apos;
+      objtype  = pw_object-type
+      domatyp  = pw_text_pair_read-domatyp
+      domanam  = pw_text_pair_read-domanam
+    TABLES
+      t_pcx_s1 = pt_texts
+      t_pcx_s2 = pt_proposals.
+
+ENDFORM.                    &quot; READ_PROPOSALS
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  SHOW_RESULT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+FORM show_result.
+
+  DATA: tl_fieldcat TYPE lvc_t_fcat.
+
+  DATA: wl_layout   TYPE lvc_s_layo.
+
+  PERFORM fieldcat CHANGING tl_fieldcat.
+
+  wl_layout-zebra      = abap_true.
+  wl_layout-cwidth_opt = abap_true.
+
+  IF o_alv IS BOUND.
+    o_alv-&gt;free( ).
+    CLEAR o_alv.
+  ENDIF.
+
+  IF o_cc IS BOUND.
+    o_cc-&gt;free( ).
+    CLEAR o_cc.
+  ENDIF.
+
+  CREATE OBJECT o_cc
+    EXPORTING
+      container_name              = &apos;CC_0100&apos;
+    EXCEPTIONS
+      cntl_error                  = 1
+      cntl_system_error           = 2
+      create_error                = 3
+      lifetime_error              = 4
+      lifetime_dynpro_dynpro_link = 5
+      OTHERS                      = 6.
+  IF sy-subrc &lt;&gt; 0.
+    MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+               WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+  ENDIF.
+
+  CREATE OBJECT o_alv
+    EXPORTING
+      i_parent          = o_cc
+    EXCEPTIONS
+      error_cntl_create = 1
+      error_cntl_init   = 2
+      error_cntl_link   = 3
+      error_dp_create   = 4
+      OTHERS            = 5.
+  IF sy-subrc &lt;&gt; 0.
+    MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+               WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+  ENDIF.
+
+  CALL METHOD o_alv-&gt;set_table_for_first_display
+    EXPORTING
+      is_layout                     = wl_layout
+    CHANGING
+      it_outtab                     = t_output
+      it_fieldcatalog               = tl_fieldcat
+    EXCEPTIONS
+      invalid_parameter_combination = 1
+      program_error                 = 2
+      too_many_lines                = 3
+      OTHERS                        = 4.
+  IF sy-subrc &lt;&gt; 0.
+    MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+               WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+  ENDIF.
+
+ENDFORM.                    &quot; SHOW_RESULT
+
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  FIELDCAT
+*&amp;---------------------------------------------------------------------*
+FORM fieldcat  CHANGING pt_fieldcat TYPE lvc_t_fcat.
+
+  DATA: wl_fieldcat TYPE lvc_s_fcat.
+
+  wl_fieldcat-fieldname = &apos;ICON&apos;.
+  wl_fieldcat-tabname   = &apos;T_OUTPUT&apos;.
+  wl_fieldcat-icon      = abap_true.
+  APPEND wl_fieldcat TO pt_fieldcat.
+  CLEAR wl_fieldcat.
+
+  wl_fieldcat-fieldname = &apos;STATTRN&apos;.
+  wl_fieldcat-tabname   = &apos;T_OUTPUT&apos;.
+  wl_fieldcat-ref_field = &apos;STATTRN&apos;.
+  wl_fieldcat-ref_table = &apos;LXE_PCX_S2&apos;.
+  APPEND wl_fieldcat TO pt_fieldcat.
+  CLEAR wl_fieldcat.
+
+  wl_fieldcat-fieldname = &apos;TEXTKEY&apos;.
+  wl_fieldcat-tabname   = &apos;T_OUTPUT&apos;.
+  wl_fieldcat-ref_table = &apos;LXE_PCX_S1&apos;.
+  APPEND wl_fieldcat TO pt_fieldcat.
+  CLEAR wl_fieldcat.
+
+  wl_fieldcat-fieldname = &apos;S_TEXT&apos;.
+  wl_fieldcat-tabname   = &apos;T_OUTPUT&apos;.
+  wl_fieldcat-coltext   = text-f01.
+  APPEND wl_fieldcat TO pt_fieldcat.
+  CLEAR wl_fieldcat.
+
+  wl_fieldcat-fieldname = &apos;T_TEXT&apos;.
+  wl_fieldcat-tabname   = &apos;T_OUTPUT&apos;.
+  wl_fieldcat-coltext   = text-f02.
+  APPEND wl_fieldcat TO pt_fieldcat.
+
+ENDFORM.                    &quot; FIELDCAT
+
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  SET_OBJNAM
+*&amp;---------------------------------------------------------------------*
+* Set the object name for the translation system
+*----------------------------------------------------------------------*
+FORM set_objnam.
+
+  TYPES: BEGIN OF tyl_function,
+           funcname TYPE tfdir-funcname,
+           pname    TYPE tfdir-pname,
+         END OF tyl_function.
+
+  DATA: tl_subobjects TYPE STANDARD TABLE OF ty_objects.
+
+  DATA: wl_function TYPE tyl_function.
+
+  FIELD-SYMBOLS: &lt;fsl_object&gt; TYPE ty_objects.
+
+  LOOP AT t_objects ASSIGNING &lt;fsl_object&gt;.
+
+    CASE &lt;fsl_object&gt;-type.
+      WHEN &apos;FUNC&apos;.
+
+        SELECT SINGLE funcname pname
+        FROM tfdir
+        INTO wl_function
+        WHERE funcname EQ p_obj.
+
+        wl_function-pname = wl_function-pname+4.
+        &lt;fsl_object&gt;-objnam = wl_function.
+
+      WHEN OTHERS.
+        &lt;fsl_object&gt;-objnam = p_obj.
+    ENDCASE.
+
+    PERFORM fill_subobjects USING &lt;fsl_object&gt;-type
+                                  &lt;fsl_object&gt;-objnam
+                         CHANGING tl_subobjects.
+
+  ENDLOOP.
+
+  APPEND LINES OF tl_subobjects TO t_objects.
+
+ENDFORM.                    &quot; SET_OBJNAM
+
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  FILL_SUBOBJECTS
+*&amp;---------------------------------------------------------------------*
+* Fill the subobjects like Domain --&gt; Fixed Values ; Message Class --&gt; Messages
+*----------------------------------------------------------------------*
+*      --&gt;PV_TYPE        Master object type
+*      --&gt;PV_OBJECT      Master object name
+*      &lt;--PT_SUBOBJECTS  Subobjects table
+*----------------------------------------------------------------------*
+FORM fill_subobjects  USING    pv_type       TYPE ty_objects-type
+                               pv_object     TYPE ty_objects-objnam
+                      CHANGING pt_subobjects TYPE ty_t_objects.
+
+  CASE pv_type.
+    WHEN &apos;DOMA&apos;.
+      PERFORM fill_doma_subobjects USING pv_object
+                                CHANGING pt_subobjects.
+    WHEN &apos;MSAG&apos;.
+      PERFORM fill_msag_subobjects USING pv_object
+                                CHANGING pt_subobjects.
+    WHEN &apos;CLAS&apos;.
+      PERFORM fill_class_subobjects USING pv_object
+                                 CHANGING pt_subobjects.
+  ENDCASE.
+
+ENDFORM.                    &quot; FILL_SUBOBJECTS
+
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  FILL_DOMA_SUBOBJECTS
+*&amp;---------------------------------------------------------------------*
+*  Fill Domain subobjects
+*----------------------------------------------------------------------*
+FORM fill_doma_subobjects  USING    pv_domain     TYPE ty_objects-objnam
+                           CHANGING pt_subobjects TYPE ty_t_objects.
+
+  DATA: wl_object TYPE ty_objects.
+
+  wl_object-type   = &apos;VALU&apos;. &quot; Fixed-Values
+  wl_object-objnam = pv_domain.
+  APPEND wl_object TO pt_subobjects.
+
+ENDFORM.                    &quot; FILL_DOMA_SUBOBJECTS
+
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  FILL_CLASS_SUBOBJECTS
+*&amp;---------------------------------------------------------------------*
+*  Fill Classes subobjects
+*----------------------------------------------------------------------*
+FORM fill_class_subobjects USING    pv_class      TYPE ty_objects-objnam
+                           CHANGING pt_subobjects TYPE ty_t_objects.
+
+  DATA: wl_object TYPE ty_objects.
+
+  wl_object-type   = &apos;RPT8&apos;.  &quot; Text-pool
+  wl_object-objnam = pv_class.
+  APPEND wl_object TO pt_subobjects.
+
+ENDFORM.                    &quot; FILL_CLASS_SUBOBJECTS
+
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  FILL_MSAG_SUBOBJECTS
+*&amp;---------------------------------------------------------------------*
+*  Fill Messages in a message class and doku like subobjects
+*----------------------------------------------------------------------*
+*      --&gt;PV_MESSAGE     Message Class
+*      &lt;--PT_SUBOBJECTS  text
+*----------------------------------------------------------------------*
+FORM fill_msag_subobjects  USING    pv_message     TYPE ty_objects-objnam
+                           CHANGING pt_subobjects  TYPE ty_t_objects.
+
+  TYPES: BEGIN OF tyl_t100,
+           sprsl  TYPE t100-sprsl,
+           arbgb  TYPE t100-arbgb,
+           msgnr  TYPE t100-msgnr,
+         END OF tyl_t100.
+
+  DATA: tl_t100  TYPE STANDARD TABLE OF tyl_t100.
+
+  DATA: wl_t100   TYPE tyl_t100,
+        wl_object TYPE ty_objects.
+
+  CHECK p_langu IS NOT INITIAL.
+
+  SELECT sprsl
+         arbgb
+         msgnr
+  FROM t100
+  INTO TABLE tl_t100
+  WHERE sprsl EQ p_langu
+    AND arbgb EQ pv_message.
+
+  LOOP AT tl_t100 INTO wl_t100.
+
+    CLEAR: wl_object.
+
+    wl_object-type = &apos;MESS&apos;.
+
+    CONCATENATE wl_t100-arbgb
+                wl_t100-msgnr
+    INTO wl_object-objnam
+    RESPECTING BLANKS.
+
+    APPEND wl_object TO pt_subobjects.
+
+  ENDLOOP.
+
+ENDFORM.                    &quot; FILL_MSAG_SUBOBJECTS</source>
+ </PROG>
+ <PROG NAME="ZCAPRR0000_I01" VARCL="X" SUBC="I" APPL="S" RSTAT="K" RMAND="200" RLOAD="E" UCCHECK="X">
+  <textPool>
+   <language SPRAS="E">
+    <textElement ID="R" ENTRY="Include ZCAPRR0000_I01" LENGTH="22 "/>
+   </language>
+  </textPool>
+  <source>*&amp;---------------------------------------------------------------------*
+*&amp;      Module  USER_COMMAND_0100  INPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE user_command_0100 INPUT.
+
+  CASE sy-ucomm.
+    WHEN &apos;BACK&apos;.
+      LEAVE TO SCREEN 0.
+  ENDCASE.
+
+ENDMODULE.                 &quot; USER_COMMAND_0100  INPUT</source>
+ </PROG>
+</nugget>
