@@ -54,7 +54,7 @@
    </language>
   </textPool>
   <dynpros>
-   <dynpro PROG="ZCAPRR0000" DNUM="0100" FNUM="0100" BZMX="200 " BZBR="255 " MILI="196 " MICO="37 " MALI="0 " MACO="0 " NOLI="200 " NOCO="255 " VALP="0 " CUAN="G" SPRA="E" DTEXT="ALV">
+   <dynpro PROG="ZCAPRR0000" DNUM="0100" FNUM="0100" BZMX="200 " BZBR="255 " MILI="192 " MICO="37 " MALI="0 " MACO="0 " NOLI="200 " NOCO="255 " VALP="0 " CUAN="G" SPRA="E" DTEXT="ALV">
     <dynprofield FNAM="CC_0100" DIDX="00C8" FLG1="00" FLG2="30" FLG3="00" FILL="U" FMB1="30" FMB2="00" LENG="FF" LINE="01" COLN="02" LANF="00" LBLK="00" LREP="00" AUTH="101" AGLT="14" ADEZ="14"/>
     <dynprofield FNAM="SY-UCOMM" DIDX="0000" FLG1="80" FLG2="10" FLG3="00" FMB1="00" FMB2="00" LENG="14" LINE="FF" COLN="01" LTYP="O" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AGLT="00" ADEZ="00" STXT="____________________"/>
     <dynproflowsource>PROCESS BEFORE OUTPUT.
@@ -65,14 +65,50 @@
 
 PROCESS AFTER INPUT.
 
+  MODULE exit_command_0100 AT EXIT-COMMAND.
   MODULE user_command_0100.</dynproflowsource>
    </dynpro>
   </dynpros>
   <pfstatus>
    <pfstatus_sta CODE="ST0100" MODAL="D" ACTCODE="000001" PFKCODE="000001" BUTCODE="0001" INT_NOTE="0100 - Status GUI"/>
-   <pfstatus_fun CODE="BACK" TEXTNO="001" TEXT_TYPE="S" FUN_TEXT="Back"/>
+   <pfstatus_fun CODE="BACK" TEXTNO="001" TEXT_TYPE="S" FUN_TEXT="Back" PATH="B"/>
+   <pfstatus_fun CODE="EXIT" TEXTNO="001" TYPE="E" TEXT_TYPE="S" FUN_TEXT="Exit" PATH="X"/>
+   <pfstatus_fun CODE="TRANSPORT" TEXTNO="001" TEXT_TYPE="S" TEXT_NAME="ICON_TRANSPORT" ICON_ID="@4A@" FUN_TEXT="Add to transport request" PATH="A"/>
+   <pfstatus_men CODE="000002" NO="01" REF_TYPE="F" REF_CODE="&lt;12&gt;"/>
+   <pfstatus_men CODE="000002" NO="02" REF_TYPE="F" REF_CODE="&lt;13&gt;"/>
+   <pfstatus_men CODE="000002" NO="03" REF_TYPE="F" REF_CODE="&lt;24&gt;"/>
+   <pfstatus_men CODE="000002" NO="04" REF_TYPE="F" REF_CODE="&lt;14&gt;"/>
+   <pfstatus_men CODE="000002" NO="05" REF_TYPE="S" REF_CODE="&lt;S1&gt;"/>
+   <pfstatus_men CODE="000002" NO="06" REF_TYPE="F" REF_CODE="&lt;16&gt;"/>
+   <pfstatus_men CODE="000002" NO="07" REF_TYPE="F" REF_CODE="&lt;17&gt;"/>
+   <pfstatus_men CODE="000002" NO="08" REF_TYPE="F" REF_CODE="&lt;18&gt;"/>
+   <pfstatus_men CODE="000002" NO="09" REF_TYPE="S" REF_CODE="&lt;S1&gt;"/>
+   <pfstatus_men CODE="000002" NO="10" REF_TYPE="F" REF_CODE="&lt;26&gt;"/>
+   <pfstatus_men CODE="000002" NO="11" REF_TYPE="F" REF_CODE="&lt;27&gt;"/>
+   <pfstatus_men CODE="000002" NO="12" REF_TYPE="F" REF_CODE="&lt;20&gt;"/>
+   <pfstatus_men CODE="000002" NO="13" REF_TYPE="S" REF_CODE="&lt;S1&gt;"/>
+   <pfstatus_men CODE="000002" NO="14" REF_TYPE="F" REF_CODE="&lt;22&gt;"/>
+   <pfstatus_men CODE="000003" NO="01" REF_TYPE="S" REF_CODE="&lt;S1&gt;"/>
+   <pfstatus_men CODE="000003" NO="02" REF_TYPE="F" REF_CODE="&lt;23&gt;"/>
+   <pfstatus_men CODE="000007" NO="01" REF_TYPE="F" REF_CODE="TRANSPORT" REF_NO="001"/>
+   <pfstatus_men CODE="000008" NO="01" REF_TYPE="F" REF_CODE="BACK" REF_NO="001"/>
+   <pfstatus_men CODE="000008" NO="02" REF_TYPE="F" REF_CODE="EXIT" REF_NO="001"/>
+   <pfstatus_mtx CODE="000002" TEXT_TYPE="S" TEXT="Edit" PATH="E" INT_NOTE="Standard Supplement"/>
+   <pfstatus_mtx CODE="000003" TEXT_TYPE="S" TEXT="Goto" PATH="G" INT_NOTE="Standard Supplement"/>
+   <pfstatus_mtx CODE="000004" TEXT_TYPE="S" TEXT="Extras" PATH="A" INT_NOTE="Standard Supplement"/>
+   <pfstatus_mtx CODE="000005" TEXT_TYPE="S" TEXT="Environment" PATH="V" INT_NOTE="Standard Supplement"/>
+   <pfstatus_mtx CODE="000006" TEXT_TYPE="S" TEXT="Goto" PATH="G" INT_NOTE="Standard Supplement"/>
+   <pfstatus_mtx CODE="000007" TEXT_TYPE="S" TEXT="Edit" PATH="E"/>
+   <pfstatus_mtx CODE="000008" TEXT_TYPE="S" TEXT="Goto" PATH="G"/>
+   <pfstatus_act CODE="000001" NO="01" MENUCODE="000007"/>
+   <pfstatus_act CODE="000001" NO="02" MENUCODE="000008"/>
+   <pfstatus_but PFK_CODE="000001" CODE="0001" NO="01" PFNO="25"/>
    <pfstatus_pfk CODE="000001" PFNO="03" FUNCODE="BACK" FUNNO="001"/>
+   <pfstatus_pfk CODE="000001" PFNO="15" FUNCODE="EXIT" FUNNO="001"/>
+   <pfstatus_pfk CODE="000001" PFNO="25" FUNCODE="TRANSPORT" FUNNO="001"/>
    <pfstatus_set STATUS="ST0100" FUNCTION="BACK"/>
+   <pfstatus_set STATUS="ST0100" FUNCTION="EXIT"/>
+   <pfstatus_set STATUS="ST0100" FUNCTION="TRANSPORT"/>
    <pfstatus_doc OBJ_TYPE="A" OBJ_CODE="000001" MODAL="D" INT_NOTE="0100 - Status GUI"/>
    <pfstatus_doc OBJ_TYPE="P" OBJ_CODE="000001" MODAL="D" INT_NOTE="0100 - Status GUI"/>
    <pfstatus_doc OBJ_TYPE="B" OBJ_CODE="000001" SUB_CODE="0001" MODAL="D" INT_NOTE="0100 - Status GUI"/>
@@ -83,6 +119,8 @@ PROCESS AFTER INPUT.
 * Date:         27.09.2016
 * Description:  Creation
 *----------------------------------------------------------------------*
+* 03.05.2018 - New feature! Add translation to transport request
+* 03.05.2018 - Fixed Function Module object type in SET_OBJNAME
 *------  NOMENCLATURE  ------------------------------------------------*
 * V_    --&gt; Global Variable
 * W_    --&gt; Global Work Area
@@ -138,83 +176,6 @@ START-OF-SELECTION.
 END-OF-SELECTION.
 
   CALL SCREEN 0100.</source>
- </PROG>
- <PROG NAME="ZCAPRR0000_TOP" VARCL="X" SUBC="I" APPL="S" RSTAT="K" RMAND="200" RLOAD="E" UCCHECK="X">
-  <textPool>
-   <language SPRAS="E">
-    <textElement ID="R" ENTRY="Include ZCAPRR0000_TOP" LENGTH="22 "/>
-   </language>
-  </textPool>
-  <source>TYPE-POOLS: abap, vrm, icon.
-
-TYPES: BEGIN OF ty_text_pair_read,
-         domatyp  TYPE  lxedomatyp,
-         domanam  TYPE  lxedomanam,
-       END OF ty_text_pair_read,
-       BEGIN OF ty_output,
-         icon    TYPE icon-name,
-         stattrn TYPE lxe_pcx_s2-stattrn,
-         textkey TYPE lxe_pcx_s1-textkey,
-         s_text  TYPE lxe_pcx_s1-s_text,
-         t_text  TYPE lxe_pcx_s1-t_text,
-       END OF ty_output,
-       BEGIN OF ty_objects,
-         type   TYPE lxeobjtype,
-         objnam TYPE lxeobjname,
-       END OF ty_objects.
-
-TYPES: ty_t_pcx_s1  TYPE STANDARD TABLE OF lxe_pcx_s1,
-       ty_t_pcx_s2  TYPE STANDARD TABLE OF lxe_pcx_s2,
-       ty_t_objects TYPE STANDARD TABLE OF ty_objects.
-
-DATA: o_alv    TYPE REF TO cl_gui_alv_grid,
-      o_cc     TYPE REF TO cl_gui_custom_container.
-
-DATA: t_output  TYPE STANDARD TABLE OF ty_output,
-      t_objects TYPE STANDARD TABLE OF ty_objects.</source>
- </PROG>
- <PROG NAME="ZCAPRR0000_SEL" VARCL="X" SUBC="I" APPL="S" RSTAT="K" RMAND="200" RLOAD="E" UCCHECK="X">
-  <textPool>
-   <language SPRAS="E">
-    <textElement ID="R" ENTRY="Include ZCAPRR0000_SEL" LENGTH="22 "/>
-   </language>
-  </textPool>
-  <source>SELECTION-SCREEN BEGIN OF BLOCK b10 WITH FRAME TITLE text-b10.
-
-PARAMETERS: p_obj TYPE e071-obj_name OBLIGATORY.
-
-PARAMETERS: p_dest AS LISTBOX VISIBLE LENGTH 10 DEFAULT sy-langu OBLIGATORY USER-COMMAND rb10.
-
-SELECTION-SCREEN SKIP.
-
-SELECTION-SCREEN BEGIN OF BLOCK b11 WITH FRAME TITLE text-b11.
-
-PARAMETERS: rb_prog RADIOBUTTON GROUP rb11 DEFAULT &apos;X&apos; USER-COMMAND rb11,
-            rb_cuad RADIOBUTTON GROUP rb11,
-            rb_func RADIOBUTTON GROUP rb11,
-            rb_fugr RADIOBUTTON GROUP rb11,
-            rb_tran RADIOBUTTON GROUP rb11,
-            rb_dtel RADIOBUTTON GROUP rb11,
-            rb_strc RADIOBUTTON GROUP rb11,
-            rb_doma RADIOBUTTON GROUP rb11,
-            rb_shlp RADIOBUTTON GROUP rb11,
-            rb_enqu RADIOBUTTON GROUP rb11,
-            rb_clas RADIOBUTTON GROUP rb11,
-            rb_mess RADIOBUTTON GROUP rb11.
-
-SELECTION-SCREEN END OF BLOCK b11.
-
-SELECTION-SCREEN END OF BLOCK b10.
-
-
-
-SELECTION-SCREEN BEGIN OF BLOCK b20 WITH FRAME TITLE text-b20.
-
-PARAMETERS: p_langu  TYPE rload      MODIF ID b20,
-            p_scrlan TYPE lxeisolang MODIF ID b20,
-            p_dstlan TYPE lxeisolang MODIF ID b20.
-
-SELECTION-SCREEN END OF BLOCK b20.</source>
  </PROG>
  <PROG NAME="ZCAPRR0000_F01" VARCL="X" SUBC="I" APPL="S" RSTAT="K" RMAND="200" RLOAD="E" UCCHECK="X">
   <textPool>
@@ -357,40 +318,52 @@ FORM radiobutton_rb11.
 
   CASE abap_true.
     WHEN rb_prog.
-      wl_object-type   = &apos;RPT4&apos;.
+      wl_object-type    = &apos;RPT4&apos;.
+      wl_object-tr_type = &apos;PROG&apos;.
       APPEND wl_object TO t_objects.
     WHEN rb_func.
-      wl_object-type = &apos;FNC1&apos;.
+      wl_object-type    = &apos;FNC1&apos;.
+      wl_object-tr_type = &apos;FUNC&apos;.
       APPEND wl_object TO t_objects.
     WHEN rb_tran.
-      wl_object-type = &apos;TRAN&apos;.
+      wl_object-type    = &apos;TRAN&apos;.
+      wl_object-tr_type = &apos;TRAN&apos;.
       APPEND wl_object TO t_objects.
     WHEN rb_dtel.
-      wl_object-type = &apos;DTEL&apos;.
+      wl_object-type    = &apos;DTEL&apos;.
+      wl_object-tr_type = &apos;DTEL&apos;.
       APPEND wl_object TO t_objects.
     WHEN rb_strc.
-      wl_object-type = &apos;TABT&apos;.
+      wl_object-type    = &apos;TABT&apos;.
+      wl_object-tr_type = &apos;TABL&apos;.
       APPEND wl_object TO t_objects.
     WHEN rb_fugr.
-      wl_object-type = &apos;RPT1&apos;.
+      wl_object-type    = &apos;RPT1&apos;.
+      wl_object-tr_type = &apos;FUGR&apos;.
       APPEND wl_object TO t_objects.
     WHEN rb_doma.
-      wl_object-type = &apos;DOMA&apos;. &quot; Descriptions
+      wl_object-type    = &apos;DOMA&apos;. &quot; Descriptions
+      wl_object-tr_type = &apos;DOMA&apos;.
       APPEND wl_object TO t_objects.
     WHEN rb_shlp.
-      wl_object-type = &apos;SHLP&apos;.
+      wl_object-type    = &apos;SHLP&apos;.
+      wl_object-tr_type = &apos;SHLP&apos;.
       APPEND wl_object TO t_objects.
     WHEN rb_enqu.
-      wl_object-type = &apos;ENQU&apos;.
+      wl_object-type    = &apos;ENQU&apos;.
+      wl_object-tr_type = &apos;ENQU&apos;.
       APPEND wl_object TO t_objects.
     WHEN rb_clas.
-      wl_object-type = &apos;CLAS&apos;. &quot; Descriptions
+      wl_object-type    = &apos;CLAS&apos;. &quot; Descriptions
+      wl_object-tr_type = &apos;CLAS&apos;.
       APPEND wl_object TO t_objects.
     WHEN rb_mess.
-      wl_object-type = &apos;MSAG&apos;.
+      wl_object-type    = &apos;MSAG&apos;.
+      wl_object-tr_type = &apos;MSAG&apos;.
       APPEND wl_object TO t_objects.
     WHEN rb_cuad.
-      wl_object-type = &apos;CA4&apos;.
+      wl_object-type    = &apos;CA4&apos;.
+      wl_object-tr_type = &apos;CUAD&apos;.
       APPEND wl_object TO t_objects.
     WHEN OTHERS.
   ENDCASE.
@@ -703,7 +676,7 @@ FORM set_objnam.
   LOOP AT t_objects ASSIGNING &lt;fsl_object&gt;.
 
     CASE &lt;fsl_object&gt;-type.
-      WHEN &apos;FUNC&apos;.
+      WHEN &apos;FNC1&apos;.
 
         SELECT SINGLE funcname pname
         FROM tfdir
@@ -833,7 +806,240 @@ FORM fill_msag_subobjects  USING    pv_message     TYPE ty_objects-objnam
 
   ENDLOOP.
 
-ENDFORM.                    &quot; FILL_MSAG_SUBOBJECTS</source>
+ENDFORM.                    &quot; FILL_MSAG_SUBOBJECTS
+
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  OK_TRANSPORT
+*&amp;---------------------------------------------------------------------*
+*  Add object translation to transport request
+*----------------------------------------------------------------------*
+FORM ok_transport.
+
+  DATA: vl_task  TYPE e070-trkorr.
+
+  PERFORM get_task CHANGING vl_task.
+  PERFORM add_object_to_task USING vl_task.
+
+ENDFORM.                    &quot;OK_TRANSPORT
+
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  GET_TASK
+*&amp;---------------------------------------------------------------------*
+*  Ask the transport request and return the first available task
+*----------------------------------------------------------------------*
+*      &lt;--PV_TASK     Task ID
+*----------------------------------------------------------------------*
+FORM get_task CHANGING pv_task TYPE e070-trkorr.
+
+  DATA: vl_transport TYPE e070-trkorr.
+
+  PERFORM ask_transport_request CHANGING vl_transport.
+
+  PERFORM default_task  USING vl_transport
+                     CHANGING pv_task.
+
+ENDFORM.                    &quot;GET_TASK
+
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  ASK_TRANSPORT_REQUEST
+*&amp;---------------------------------------------------------------------*
+*  POPUP to select Transport Request
+*----------------------------------------------------------------------*
+*      &lt;--PV_TRANSPORT  Transport Request ID
+*----------------------------------------------------------------------*
+FORM ask_transport_request CHANGING pv_transport TYPE e070-trkorr.
+
+  DATA: wl_request TYPE trwbo_request_header.
+
+  CALL FUNCTION &apos;TR_REQUEST_CHOICE&apos;
+    EXPORTING
+      iv_request_types     = &apos;K&apos;
+    IMPORTING
+      es_request           = wl_request
+    EXCEPTIONS
+      invalid_request      = 1
+      invalid_request_type = 2
+      user_not_owner       = 3
+      no_objects_appended  = 4
+      enqueue_error        = 5
+      cancelled_by_user    = 6
+      recursive_call       = 7
+      OTHERS               = 8.
+
+  IF sy-subrc NE 0.
+
+    MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+       WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+    RETURN.
+
+  ENDIF.
+
+  pv_transport = wl_request-trkorr.
+
+ENDFORM.                    &quot;ASK_TRANSPORT_REQUEST
+
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  DEFAULT_TASK
+*&amp;---------------------------------------------------------------------*
+*  Return the first available task from the PV_TRANSPORT transport request
+*----------------------------------------------------------------------*
+*      --&gt;PV_TRANSPORT  Transport Request
+*      &lt;--PV_TASK       Task
+*----------------------------------------------------------------------*
+FORM default_task  USING pv_transport TYPE e070-trkorr
+                CHANGING pv_task      TYPE e070-trkorr.
+
+  SELECT SINGLE trkorr
+  FROM e070
+  INTO pv_task
+  WHERE strkorr    EQ pv_transport
+    AND trfunction EQ &apos;S&apos;
+    AND trstatus   EQ &apos;D&apos;
+    AND as4user    EQ sy-uname.
+
+ENDFORM.                    &quot;DEFAULT_TASK
+
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  ADD_OBJECT_TO_TASK
+*&amp;---------------------------------------------------------------------*
+*  Add the object P_OBJ translation into the task VL_TASK
+*----------------------------------------------------------------------*
+*      --&gt;PV_TASK    Task
+*----------------------------------------------------------------------*
+FORM add_object_to_task USING pv_task TYPE e070-trkorr.
+
+  DATA: tl_e071   TYPE STANDARD TABLE OF e071,
+        tl_e071k  TYPE STANDARD TABLE OF e071k.
+
+  DATA: wl_e071   TYPE e071,
+        wl_object TYPE ty_objects.
+
+  wl_e071-pgmid    = &apos;LANG&apos;.
+  wl_e071-lang     = p_dest.
+
+  LOOP AT t_objects INTO wl_object.
+
+    wl_e071-object   = wl_object-tr_type.
+    wl_e071-obj_name = wl_object-objnam.
+    APPEND wl_e071 TO tl_e071.
+
+  ENDLOOP.
+
+  CALL FUNCTION &apos;TR_APPEND_TO_COMM_OBJS_KEYS&apos;
+    EXPORTING
+      wi_trkorr                      = pv_task
+    TABLES
+      wt_e071                        = tl_e071
+      wt_e071k                       = tl_e071k
+    EXCEPTIONS
+      key_char_in_non_char_field     = 1
+      key_check_keysyntax_error      = 2
+      key_inttab_table               = 3
+      key_longer_field_but_no_generc = 4
+      key_missing_key_master_fields  = 5
+      key_missing_key_tablekey       = 6
+      key_non_char_but_no_generic    = 7
+      key_no_key_fields              = 8
+      key_string_longer_char_key     = 9
+      key_table_has_no_fields        = 10
+      key_table_not_activ            = 11
+      key_unallowed_key_function     = 12
+      key_unallowed_key_object       = 13
+      key_unallowed_key_objname      = 14
+      key_unallowed_key_pgmid        = 15
+      key_without_header             = 16
+      ob_check_obj_error             = 17
+      ob_devclass_no_exist           = 18
+      ob_empty_key                   = 19
+      ob_generic_objectname          = 20
+      ob_ill_delivery_transport      = 21
+      ob_ill_lock                    = 22
+      ob_ill_parts_transport         = 23
+      ob_ill_source_system           = 24
+      ob_ill_system_object           = 25
+      ob_ill_target                  = 26
+      ob_inttab_table                = 27
+      ob_local_object                = 28
+      ob_locked_by_other             = 29
+      ob_modif_only_in_modif_order   = 30
+      ob_name_too_long               = 31
+      ob_no_append_of_corr_entry     = 32
+      ob_no_append_of_c_member       = 33
+      ob_no_consolidation_transport  = 34
+      ob_no_original                 = 35
+      ob_no_shared_repairs           = 36
+      ob_no_systemname               = 37
+      ob_no_systemtype               = 38
+      ob_no_tadir                    = 39
+      ob_no_tadir_not_lockable       = 40
+      ob_privat_object               = 41
+      ob_repair_only_in_repair_order = 42
+      ob_reserved_name               = 43
+      ob_syntax_error                = 44
+      ob_table_has_no_fields         = 45
+      ob_table_not_activ             = 46
+      tr_enqueue_failed              = 47
+      tr_errors_in_error_table       = 48
+      tr_ill_korrnum                 = 49
+      tr_lockmod_failed              = 50
+      tr_lock_enqueue_failed         = 51
+      tr_not_owner                   = 52
+      tr_no_systemname               = 53
+      tr_no_systemtype               = 54
+      tr_order_not_exist             = 55
+      tr_order_released              = 56
+      tr_order_update_error          = 57
+      tr_wrong_order_type            = 58
+      ob_invalid_target_system       = 59
+      tr_no_authorization            = 60
+      ob_wrong_tabletyp              = 61
+      ob_wrong_category              = 62
+      ob_system_error                = 63
+      ob_unlocal_objekt_in_local_ord = 64
+      tr_wrong_client                = 65
+      ob_wrong_client                = 66
+      key_wrong_client               = 67
+      OTHERS                         = 68.
+
+  IF sy-subrc NE 0.
+
+    MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+       WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+    RETURN.
+
+  ENDIF.
+
+  MESSAGE s003(admi_crit_aba) WITH pv_task.
+* Object successfully added to request/task &amp;1
+
+ENDFORM.                    &quot;ADD_OBJECT_TO_TASK</source>
+ </PROG>
+ <PROG NAME="ZCAPRR0000_O01" VARCL="X" SUBC="I" APPL="S" RSTAT="K" RMAND="050" RLOAD="E" UCCHECK="X">
+  <textPool>
+   <language SPRAS="E">
+    <textElement ID="R" ENTRY="Include ZCAPRR0000_O01" LENGTH="22 "/>
+   </language>
+  </textPool>
+  <source>*----------------------------------------------------------------------*
+*  MODULE STATUS_0100 OUTPUT
+*----------------------------------------------------------------------*
+*
+*----------------------------------------------------------------------*
+MODULE status_0100 OUTPUT.
+
+  SET PF-STATUS &apos;ST0100&apos;.
+  SET TITLEBAR &apos;TT0100&apos;.
+
+ENDMODULE.                 &quot; STATUS_0100  OUTPUT
+
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  SHOW_RESULT  OUTPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE show_result OUTPUT.
+  PERFORM show_result.
+ENDMODULE.                 &quot; SHOW_RESULT  OUTPUT</source>
  </PROG>
  <PROG NAME="ZCAPRR0000_I01" VARCL="X" SUBC="I" APPL="S" RSTAT="K" RMAND="200" RLOAD="E" UCCHECK="X">
   <textPool>
@@ -851,8 +1057,102 @@ MODULE user_command_0100 INPUT.
   CASE sy-ucomm.
     WHEN &apos;BACK&apos;.
       LEAVE TO SCREEN 0.
+    WHEN &apos;TRANSPORT&apos;.
+      PERFORM ok_transport.
   ENDCASE.
 
-ENDMODULE.                 &quot; USER_COMMAND_0100  INPUT</source>
+ENDMODULE.                 &quot; USER_COMMAND_0100  INPUT
+
+*----------------------------------------------------------------------*
+*  MODULE exit_command_0100 INPUT
+*----------------------------------------------------------------------*
+*
+*----------------------------------------------------------------------*
+MODULE exit_command_0100 INPUT.
+
+  CASE sy-ucomm.
+    WHEN &apos;EXIT&apos;.
+      LEAVE PROGRAM.
+  ENDCASE.
+
+ENDMODULE.                    &quot;exit_command_0100 INPUT</source>
+ </PROG>
+ <PROG NAME="ZCAPRR0000_SEL" VARCL="X" SUBC="I" APPL="S" RSTAT="K" RMAND="200" RLOAD="E" UCCHECK="X">
+  <textPool>
+   <language SPRAS="E">
+    <textElement ID="R" ENTRY="Include ZCAPRR0000_SEL" LENGTH="22 "/>
+   </language>
+  </textPool>
+  <source>SELECTION-SCREEN BEGIN OF BLOCK b10 WITH FRAME TITLE text-b10.
+
+PARAMETERS: p_obj TYPE e071-obj_name OBLIGATORY.
+
+PARAMETERS: p_dest AS LISTBOX VISIBLE LENGTH 10 DEFAULT sy-langu OBLIGATORY USER-COMMAND rb10.
+
+SELECTION-SCREEN SKIP.
+
+SELECTION-SCREEN BEGIN OF BLOCK b11 WITH FRAME TITLE text-b11.
+
+PARAMETERS: rb_prog RADIOBUTTON GROUP rb11 DEFAULT &apos;X&apos; USER-COMMAND rb11,
+            rb_cuad RADIOBUTTON GROUP rb11,
+            rb_func RADIOBUTTON GROUP rb11,
+            rb_fugr RADIOBUTTON GROUP rb11,
+            rb_tran RADIOBUTTON GROUP rb11,
+            rb_dtel RADIOBUTTON GROUP rb11,
+            rb_strc RADIOBUTTON GROUP rb11,
+            rb_doma RADIOBUTTON GROUP rb11,
+            rb_shlp RADIOBUTTON GROUP rb11,
+            rb_enqu RADIOBUTTON GROUP rb11,
+            rb_clas RADIOBUTTON GROUP rb11,
+            rb_mess RADIOBUTTON GROUP rb11.
+
+SELECTION-SCREEN END OF BLOCK b11.
+
+SELECTION-SCREEN END OF BLOCK b10.
+
+
+
+SELECTION-SCREEN BEGIN OF BLOCK b20 WITH FRAME TITLE text-b20.
+
+PARAMETERS: p_langu  TYPE rload      MODIF ID b20,
+            p_scrlan TYPE lxeisolang MODIF ID b20,
+            p_dstlan TYPE lxeisolang MODIF ID b20.
+
+SELECTION-SCREEN END OF BLOCK b20.</source>
+ </PROG>
+ <PROG NAME="ZCAPRR0000_TOP" VARCL="X" SUBC="I" APPL="S" RSTAT="K" RMAND="200" RLOAD="E" UCCHECK="X">
+  <textPool>
+   <language SPRAS="E">
+    <textElement ID="R" ENTRY="Include ZCAPRR0000_TOP" LENGTH="22 "/>
+   </language>
+  </textPool>
+  <source>TYPE-POOLS: abap, vrm, icon.
+
+TYPES: BEGIN OF ty_text_pair_read,
+         domatyp  TYPE  lxedomatyp,
+         domanam  TYPE  lxedomanam,
+       END OF ty_text_pair_read,
+       BEGIN OF ty_output,
+         icon    TYPE icon-name,
+         stattrn TYPE lxe_pcx_s2-stattrn,
+         textkey TYPE lxe_pcx_s1-textkey,
+         s_text  TYPE lxe_pcx_s1-s_text,
+         t_text  TYPE lxe_pcx_s1-t_text,
+       END OF ty_output,
+       BEGIN OF ty_objects,
+         type    TYPE lxeobjtype,
+         tr_type TYPE e071-object,
+         objnam  TYPE lxeobjname,
+       END OF ty_objects.
+
+TYPES: ty_t_pcx_s1  TYPE STANDARD TABLE OF lxe_pcx_s1,
+       ty_t_pcx_s2  TYPE STANDARD TABLE OF lxe_pcx_s2,
+       ty_t_objects TYPE STANDARD TABLE OF ty_objects.
+
+DATA: o_alv    TYPE REF TO cl_gui_alv_grid,
+      o_cc     TYPE REF TO cl_gui_custom_container.
+
+DATA: t_output  TYPE STANDARD TABLE OF ty_output,
+      t_objects TYPE STANDARD TABLE OF ty_objects.</source>
  </PROG>
 </nugget>

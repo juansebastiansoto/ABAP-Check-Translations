@@ -3,6 +3,8 @@
 * Date:         27.09.2016
 * Description:  Creation
 *----------------------------------------------------------------------*
+* 03.05.2018 - New feature! Add translation to transport request
+* 03.05.2018 - Fixed Function Module object type in SET_OBJNAME
 *------  NOMENCLATURE  ------------------------------------------------*
 * V_    --> Global Variable
 * W_    --> Global Work Area
@@ -62,7 +64,6 @@ END-OF-SELECTION.
 *GUI Texts
 *----------------------------------------------------------
 * TT0100 --> Check Translations
-* TT0100 --> Verifiar traducciones
 
 *Text elements
 *----------------------------------------------------------
@@ -93,5 +94,12 @@ END-OF-SELECTION.
 * RB_STRC         Structure or Table
 * RB_TRAN         Transaction Code
 
+
+*Messages
+*----------------------------------------------------------
+*
+* Message class: ADMI_CRIT_ABA
+*003   Object successfully added to request/task &1
+
 ----------------------------------------------------------------------------------
-Extracted by Mass Download version 1.5.5 - E.G.Mellodew. 1998-2016. Sap Release 700
+Extracted by Mass Download version 1.5.5 - E.G.Mellodew. 1998-2018. Sap Release 731

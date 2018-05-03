@@ -1,4 +1,3 @@
-
 TYPE-POOLS: abap, vrm, icon.
 
 TYPES: BEGIN OF ty_text_pair_read,
@@ -13,8 +12,9 @@ TYPES: BEGIN OF ty_text_pair_read,
          t_text  TYPE lxe_pcx_s1-t_text,
        END OF ty_output,
        BEGIN OF ty_objects,
-         type   TYPE lxeobjtype,
-         objnam TYPE lxeobjname,
+         type    TYPE lxeobjtype,
+         tr_type TYPE e071-object,
+         objnam  TYPE lxeobjname,
        END OF ty_objects.
 
 TYPES: ty_t_pcx_s1  TYPE STANDARD TABLE OF lxe_pcx_s1,
@@ -28,4 +28,4 @@ DATA: t_output  TYPE STANDARD TABLE OF ty_output,
       t_objects TYPE STANDARD TABLE OF ty_objects.
 
 ----------------------------------------------------------------------------------
-Extracted by Mass Download version 1.5.5 - E.G.Mellodew. 1998-2016. Sap Release 700
+Extracted by Mass Download version 1.5.5 - E.G.Mellodew. 1998-2018. Sap Release 731

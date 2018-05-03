@@ -5,10 +5,10 @@
 %_DYNPRO																																
 ZCAPRR0000																																
 0100																																
-700																																
+731																																
                 40																																
 %_HEADER																																
-ZCAPRR0000                              0100 0100    200255196 37  0  0200255  0G E                              20160928140737																																
+ZCAPRR0000                              0100 0100    200255192 37  0  0200255  0G E                              20180503101920																																
 %_DESCRIPTION																																
 ALV																																
 %_FIELDS																																
@@ -24,4 +24,5 @@ PROCESS BEFORE OUTPUT.
 																																
 PROCESS AFTER INPUT.																																
 																																
+  MODULE exit_command_0100 AT EXIT-COMMAND.																																
   MODULE user_command_0100.																																

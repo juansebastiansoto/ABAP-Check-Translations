@@ -20,4 +20,4 @@ MODULE show_result OUTPUT.
 ENDMODULE.                 " SHOW_RESULT  OUTPUT
 
 ----------------------------------------------------------------------------------
-Extracted by Mass Download version 1.5.5 - E.G.Mellodew. 1998-2016. Sap Release 700
+Extracted by Mass Download version 1.5.5 - E.G.Mellodew. 1998-2018. Sap Release 731
