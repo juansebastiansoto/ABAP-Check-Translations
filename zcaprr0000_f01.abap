@@ -552,8 +552,9 @@ FORM fill_doma_subobjects  USING    pv_domain     TYPE ty_objects-objnam
 
   DATA: wl_object TYPE ty_objects.
 
-  wl_object-type   = 'VALU'. " Fixed-Values
-  wl_object-objnam = pv_domain.
+  wl_object-type    = 'VALU'. " Fixed-Values
+  wl_object-tr_type = 'DOMA'.
+  wl_object-objnam  = pv_domain.
   APPEND wl_object TO pt_subobjects.
 
 ENDFORM.                    " FILL_DOMA_SUBOBJECTS
@@ -568,8 +569,9 @@ FORM fill_class_subobjects USING    pv_class      TYPE ty_objects-objnam
 
   DATA: wl_object TYPE ty_objects.
 
-  wl_object-type   = 'RPT8'.  " Text-pool
-  wl_object-objnam = pv_class.
+  wl_object-type    = 'RPT8'.  " Text-pool
+  wl_object-tr_type = 'CLAS'.
+  wl_object-objnam  = pv_class.
   APPEND wl_object TO pt_subobjects.
 
 ENDFORM.                    " FILL_CLASS_SUBOBJECTS
@@ -610,7 +612,8 @@ FORM fill_msag_subobjects  USING    pv_message     TYPE ty_objects-objnam
 
     CLEAR: wl_object.
 
-    wl_object-type = 'MESS'.
+    wl_object-type    = 'MESS'.
+    wl_object-tr_type = 'MESS'.
 
     CONCATENATE wl_t100-arbgb
                 wl_t100-msgnr
@@ -828,6 +831,13 @@ FORM add_object_to_task USING pv_task TYPE e070-trkorr.
 * Object successfully added to request/task &1
 
 ENDFORM.                    "ADD_OBJECT_TO_TASK
+
+
+*Messages
+*----------------------------------------------------------
+*
+* Message class: ADMI_CRIT_ABA
+*003   Object successfully added to request/task &1
 
 ----------------------------------------------------------------------------------
 Extracted by Mass Download version 1.5.5 - E.G.Mellodew. 1998-2018. Sap Release 731
