@@ -1,4 +1,3 @@
-
 TYPE-POOLS: abap, vrm, icon.
 
 TYPES: BEGIN OF ty_text_pair_read,
@@ -26,6 +25,3 @@ DATA: o_alv    TYPE REF TO cl_gui_alv_grid,
 
 DATA: t_output  TYPE STANDARD TABLE OF ty_output,
       t_objects TYPE STANDARD TABLE OF ty_objects.
-
-----------------------------------------------------------------------------------
-Extracted by Mass Download version 1.5.5 - E.G.Mellodew. 1998-2016. Sap Release 700

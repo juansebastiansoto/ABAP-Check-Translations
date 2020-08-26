@@ -123,7 +123,7 @@ ENDFORM.                                                    " READ_MASTER_LANGUA
 *&---------------------------------------------------------------------*
 *&      Form  RADIOBUTTON_RB11
 *&---------------------------------------------------------------------*
-*       text
+* Set translation object type from Radio Button Selection
 *----------------------------------------------------------------------*
 FORM radiobutton_rb11.
 
@@ -218,6 +218,8 @@ ENDFORM.                    " FILL_LANG_LISTBOX
 *&---------------------------------------------------------------------*
 *&      Form  READ_ISO_LANGU
 *&---------------------------------------------------------------------*
+* Convert SAP Language Code to ISO Language Code
+*----------------------------------------------------------------------*
 FORM read_iso_langu  USING    pv_r3   TYPE langu
                      CHANGING pv_iso  TYPE lxeisolang.
 
@@ -234,8 +236,6 @@ ENDFORM.                    " READ_ISO_LANGU
 *&---------------------------------------------------------------------*
 *&      Form  ANALYZE_TRANSLATIONS
 *&---------------------------------------------------------------------*
-*       text
-*----------------------------------------------------------------------*
 FORM analyze_translations.
 
   DATA: tl_texts     TYPE ty_t_pcx_s1,
@@ -297,9 +297,7 @@ ENDFORM.                    " ANALYZE_TRANSLATIONS
 *&---------------------------------------------------------------------*
 *&      Form  READ_TEXTS
 *&---------------------------------------------------------------------*
-*       text
-*----------------------------------------------------------------------*
-*      <--P_TL_TEXTS  text
+* Read the original objects texts
 *----------------------------------------------------------------------*
 FORM read_texts  USING pw_object         TYPE ty_objects
               CHANGING pt_texts          TYPE ty_t_pcx_s1
@@ -323,17 +321,14 @@ ENDFORM.                    " READ_TEXTS
 *&---------------------------------------------------------------------*
 *&      Form  READ_PROPOSALS
 *&---------------------------------------------------------------------*
-*       text
-*----------------------------------------------------------------------*
-*      -->P_WL_TEXT_PAIR_READ  text
-*      <--P_TL_PROPOSALS  text
+* Read the objects translated texts and his status
 *----------------------------------------------------------------------*
 FORM read_proposals  USING    pw_text_pair_read TYPE ty_text_pair_read
                               pt_texts          TYPE ty_t_pcx_s1
                               pw_object         TYPE ty_objects
                      CHANGING pt_proposals      TYPE ty_t_pcx_s2.
 
-  CALL FUNCTION 'LXE_PP1_PROPOSALS_GET_SE63'
+  CALL FUNCTION 'LXE_PP1_PROPOSALS_GET'
     EXPORTING
       s_lang   = p_scrlan
       t_lang   = p_dstlan
@@ -349,8 +344,6 @@ ENDFORM.                    " READ_PROPOSALS
 *&---------------------------------------------------------------------*
 *&      Form  SHOW_RESULT
 *&---------------------------------------------------------------------*
-*       text
-*----------------------------------------------------------------------*
 FORM show_result.
 
   DATA: tl_fieldcat TYPE lvc_t_fcat.
@@ -447,13 +440,13 @@ FORM fieldcat  CHANGING pt_fieldcat TYPE lvc_t_fcat.
 
   wl_fieldcat-fieldname = 'S_TEXT'.
   wl_fieldcat-tabname   = 'T_OUTPUT'.
-  wl_fieldcat-coltext   = text-f01.
+  wl_fieldcat-coltext   = TEXT-f01.
   APPEND wl_fieldcat TO pt_fieldcat.
   CLEAR wl_fieldcat.
 
   wl_fieldcat-fieldname = 'T_TEXT'.
   wl_fieldcat-tabname   = 'T_OUTPUT'.
-  wl_fieldcat-coltext   = text-f02.
+  wl_fieldcat-coltext   = TEXT-f02.
   APPEND wl_fieldcat TO pt_fieldcat.
 
 ENDFORM.                    " FIELDCAT
@@ -574,9 +567,9 @@ FORM fill_msag_subobjects  USING    pv_message     TYPE ty_objects-objnam
                            CHANGING pt_subobjects  TYPE ty_t_objects.
 
   TYPES: BEGIN OF tyl_t100,
-           sprsl  TYPE t100-sprsl,
-           arbgb  TYPE t100-arbgb,
-           msgnr  TYPE t100-msgnr,
+           sprsl TYPE t100-sprsl,
+           arbgb TYPE t100-arbgb,
+           msgnr TYPE t100-msgnr,
          END OF tyl_t100.
 
   DATA: tl_t100  TYPE STANDARD TABLE OF tyl_t100.
@@ -610,6 +603,3 @@ FORM fill_msag_subobjects  USING    pv_message     TYPE ty_objects-objnam
   ENDLOOP.
 
 ENDFORM.                    " FILL_MSAG_SUBOBJECTS
-
-----------------------------------------------------------------------------------
-Extracted by Mass Download version 1.5.5 - E.G.Mellodew. 1998-2016. Sap Release 700
