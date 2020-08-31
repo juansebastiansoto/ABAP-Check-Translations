@@ -50,7 +50,8 @@ FORM read_master_language.
       FROM dd04l
       INTO p_langu
       WHERE rollname EQ p_obj
-        AND as4local EQ 'A'.
+        AND as4local EQ 'A'
+        AND as4vers  EQ '0000'.
 
     WHEN rb_strc.
 
@@ -59,6 +60,24 @@ FORM read_master_language.
       INTO p_langu
       WHERE pgmid    EQ 'R3TR'
         AND object   EQ 'TABL'
+        AND obj_name EQ p_obj.
+
+    WHEN rb_view.
+
+      SELECT SINGLE masterlang
+      FROM tadir
+      INTO p_langu
+      WHERE pgmid    EQ 'R3TR'
+        AND object   EQ 'VIEW'
+        AND obj_name EQ p_obj.
+
+    WHEN rb_ddls.
+
+      SELECT SINGLE masterlang
+      FROM tadir
+      INTO p_langu
+      WHERE pgmid    EQ 'R3TR'
+        AND object   EQ 'DDLS'
         AND obj_name EQ p_obj.
 
     WHEN rb_fugr.
@@ -133,7 +152,7 @@ FORM radiobutton_rb11.
 
   CASE abap_true.
     WHEN rb_prog.
-      wl_object-type   = 'RPT4'.
+      wl_object-type = 'RPT4'.
       APPEND wl_object TO t_objects.
     WHEN rb_func.
       wl_object-type = 'FNC1'.
@@ -146,6 +165,9 @@ FORM radiobutton_rb11.
       APPEND wl_object TO t_objects.
     WHEN rb_strc.
       wl_object-type = 'TABT'.
+      APPEND wl_object TO t_objects.
+    WHEN rb_ddls.
+      wl_object-type = 'DDLS'.
       APPEND wl_object TO t_objects.
     WHEN rb_fugr.
       wl_object-type = 'RPT1'.
@@ -165,8 +187,8 @@ FORM radiobutton_rb11.
     WHEN rb_mess.
       wl_object-type = 'MSAG'.
       APPEND wl_object TO t_objects.
-    WHEN rb_cuad.
-      wl_object-type = 'CA4'.
+    WHEN rb_view.
+      wl_object-type = 'VIEW'.
       APPEND wl_object TO t_objects.
     WHEN OTHERS.
   ENDCASE.
@@ -469,6 +491,10 @@ FORM set_objnam.
 
   FIELD-SYMBOLS: <fsl_object> TYPE ty_objects.
 
+  IF p_obj IS INITIAL.
+    RETURN.
+  ENDIF.
+
   LOOP AT t_objects ASSIGNING <fsl_object>.
 
     CASE <fsl_object>-type.
@@ -519,6 +545,15 @@ FORM fill_subobjects  USING    pv_type       TYPE ty_objects-type
     WHEN 'CLAS'.
       PERFORM fill_class_subobjects USING pv_object
                                  CHANGING pt_subobjects.
+
+    WHEN 'TABT'.
+      PERFORM fill_table_subobjects USING pv_object
+                                 CHANGING pt_subobjects.
+
+    WHEN 'RPT4'.
+      PERFORM fill_prog_subobjects USING pv_object
+                                CHANGING pt_subobjects.
+
   ENDCASE.
 
 ENDFORM.                    " FILL_SUBOBJECTS
@@ -603,3 +638,56 @@ FORM fill_msag_subobjects  USING    pv_message     TYPE ty_objects-objnam
   ENDLOOP.
 
 ENDFORM.                    " FILL_MSAG_SUBOBJECTS
+
+*&---------------------------------------------------------------------*
+*& Form FILL_PROG_SUBOBJECTS
+*&---------------------------------------------------------------------*
+*& Fill program sub objects
+*&---------------------------------------------------------------------*
+FORM fill_prog_subobjects  USING    pv_program    TYPE ty_objects-objnam
+                           CHANGING pt_subobjects TYPE ty_t_objects.
+
+  DATA: tl_d020s     TYPE STANDARD TABLE OF d020s.
+
+  DATA: wl_d020s     TYPE d020s,
+        wl_subobject TYPE ty_objects.
+
+  SELECT *
+  FROM d020s
+  INTO TABLE tl_d020s
+  WHERE prog EQ pv_program.
+
+  LOOP AT tl_d020s INTO wl_d020s WHERE type NA 'S'.
+
+    CONCATENATE wl_d020s-prog
+                wl_d020s-dnum
+    INTO wl_subobject-objnam
+    RESPECTING BLANKS.
+
+    wl_subobject-type = 'SRH4'. " Screen Painter Headers
+    APPEND wl_subobject TO pt_subobjects.
+
+    wl_subobject-type = 'SRT4'. " Screen Painter Texts (elements)
+    APPEND wl_subobject TO pt_subobjects.
+
+    wl_subobject-type   = 'CA4'. " Status & Title GUI
+    wl_subobject-objnam = pv_program.
+    APPEND wl_subobject TO pt_subobjects.
+
+  ENDLOOP.
+
+ENDFORM.
+*&---------------------------------------------------------------------*
+*& Form FILL_TABLE_SUBOBJECTS
+*&---------------------------------------------------------------------*
+*& Fill table subobjects like Foreign Key Description
+*&---------------------------------------------------------------------*
+FORM fill_table_subobjects  USING   pv_table      TYPE ty_objects-objnam
+                           CHANGING pt_subobjects TYPE ty_t_objects.
+
+  DATA: wl_subobject TYPE ty_objects.
+
+  wl_subobject-type = 'BEZD'.
+  APPEND wl_subobject TO pt_subobjects.
+
+ENDFORM.

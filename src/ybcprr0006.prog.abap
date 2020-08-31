@@ -55,7 +55,19 @@ AT SELECTION-SCREEN ON RADIOBUTTON GROUP rb11.
 
   PERFORM radiobutton_rb11.
 
+AT SELECTION-SCREEN.
+
+  IF  sy-ucomm EQ 'ONLI'
+  AND p_dstlan EQ p_scrlan.
+
+    MESSAGE e003(skta).
+*   Source language and target language cannot be the same
+
+  ENDIF.
+
 START-OF-SELECTION.
+
+
 
   PERFORM analyze_translations.
 

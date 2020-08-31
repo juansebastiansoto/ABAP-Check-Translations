@@ -9,12 +9,13 @@ SELECTION-SCREEN SKIP.
 SELECTION-SCREEN BEGIN OF BLOCK b11 WITH FRAME TITLE text-b11.
 
 PARAMETERS: rb_prog RADIOBUTTON GROUP rb11 DEFAULT 'X' USER-COMMAND rb11,
-            rb_cuad RADIOBUTTON GROUP rb11,
             rb_func RADIOBUTTON GROUP rb11,
             rb_fugr RADIOBUTTON GROUP rb11,
             rb_tran RADIOBUTTON GROUP rb11,
             rb_dtel RADIOBUTTON GROUP rb11,
             rb_strc RADIOBUTTON GROUP rb11,
+            rb_view RADIOBUTTON GROUP rb11,
+            rb_ddls RADIOBUTTON GROUP rb11,
             rb_doma RADIOBUTTON GROUP rb11,
             rb_shlp RADIOBUTTON GROUP rb11,
             rb_enqu RADIOBUTTON GROUP rb11,

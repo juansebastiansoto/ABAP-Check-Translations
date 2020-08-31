@@ -218,9 +218,9 @@
     </item>
     <item>
      <ID>S</ID>
-     <KEY>RB_CUAD</KEY>
-     <ENTRY>Status &amp; Title GUI</ENTRY>
-     <LENGTH>26</LENGTH>
+     <KEY>RB_DDLS</KEY>
+     <ENTRY>CDS View</ENTRY>
+     <LENGTH>16</LENGTH>
     </item>
     <item>
      <ID>S</ID>
@@ -281,6 +281,12 @@
      <KEY>RB_TRAN</KEY>
      <ENTRY>Transaction Code</ENTRY>
      <LENGTH>24</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>RB_VIEW</KEY>
+     <ENTRY>View</ENTRY>
+     <LENGTH>12</LENGTH>
     </item>
    </TPOOL>
   </asx:values>
